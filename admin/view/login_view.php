@@ -7,15 +7,17 @@
     <meta charset="utf-8" />
     <title>Esprezza | Login Panel </title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <link rel="shortcut icon" href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/login/esprezza_1.png'); ?>" type="image/png" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css'); ?>" rel="stylesheet" />
     <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" />
     <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" />
     <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/animate/css/animate.min.css'); ?>" rel="stylesheet" />
     <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/css/style.css'); ?>" rel="stylesheet" />
     <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/css/style-responsive.css'); ?>" rel="stylesheet" />
-    <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/css/default.css'); ?>" rel="stylesheet" />
-    <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/pace/pace.min.js'); ?>" rel="stylesheet" id="theme" />
+    
     <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/pace/pace.min.js'); ?>"></script>
   </head>
   <body class="pace-top">
@@ -24,8 +26,9 @@
       <div class="login bg-black animated fadeInDown">
         <div class="login-header">
           <div class="brand">
-            <span class="logo"></span> Esprezza
-            <small>Panel administrativo</small>
+            <figure>
+              <img src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/login/esprezza_1.png'); ?>" alt="">Esprezza 
+            </figure> 
           </div>
           <div class="icon">
             <i class="fa fa-sign-in"></i>
@@ -34,10 +37,10 @@
         <div class="login-content">
           <form class="margin-bottom-0">
             <div class="form-group m-b-20">
-              <input type="text" id="UserName" class="form-control input-lg" placeholder="Usuario" require="require" autocomplete="off" autofocus />
+              <input type="text" id="UserName" class="form-control input-lg" placeholder="Usuario" required autocomplete="off" autofocus />
             </div>
             <div class="form-group m-b-20">
-              <input type="text" id="UserPassword" class="form-control input-lg" placeholder="Contraseña" require="require" autocomplete="off" />
+              <input type="password" id="UserPassword" class="form-control input-lg" placeholder="Contraseña" required autocomplete="off" />
             </div>
             <div class="checkbox m-b-20">
               <label>
@@ -62,7 +65,6 @@
     <![endif]-->
     <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/jquery-hashchange/jquery.hashchange.min.js'); ?>"></script>
     <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/slimscroll/jquery.slimscroll.min.js'); ?>"></script>
-    <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/jquery-cookie/jquery.cookie.js'); ?>"></script>
     <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/jquery-cookie/jquery.cookie.js'); ?>"></script>
     <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/js/sha.js'); ?>"></script>
     <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/js/script.js'); ?>"></script>

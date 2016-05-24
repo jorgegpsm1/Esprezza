@@ -1,68 +1,96 @@
 $(document).ready(function(){
+  $.when($('#page-loader').addClass('hide')).done(function(){
+    $('#page-container').addClass('in');
+  });
+  $('.sidebar .nav > .has-sub > a').click(function() {
+      var target = $(this).next('.sub-menu');
+      var otherMenu = '.sidebar .nav > li.has-sub > .sub-menu';
+  
+      if ($('.page-sidebar-minified').length === 0) {
+          $(otherMenu).not(target).slideUp(250, function() {
+              $(this).closest('li').removeClass('expand');
+          });
+          $(target).slideToggle(250, function() {
+              var targetLi = $(this).closest('li');
+              if ($(targetLi).hasClass('expand')) {
+                  $(targetLi).removeClass('expand');
+              } else {
+                  $(targetLi).addClass('expand');
+              }
+          });
+      }
+  });
+  $('.sidebar .nav > .has-sub .sub-menu li.has-sub > a').click(function() {
+      if ($('.page-sidebar-minified').length === 0) {
+          var target = $(this).next('.sub-menu');
+          $(target).slideToggle(250);
+      }
+  });
+  $('[data-click=sidebar-minify]').click(function(e) {
+        e.preventDefault();
+        var sidebarClass = 'page-sidebar-minified';
+        var targetContainer = '#page-container';
+        $('#sidebar [data-scrollbar="true"]').css('margin-top','0');
+        $('#sidebar [data-scrollbar="true"]').removeAttr('data-init');
+        $('#sidebar [data-scrollbar=true]').stop();
+        if ($(targetContainer).hasClass(sidebarClass)) {
+            $(targetContainer).removeClass(sidebarClass);
+            if ($(targetContainer).hasClass('page-sidebar-fixed')) {
+                if ($('#sidebar .slimScrollDiv').length !== 0) {
+                    $('#sidebar [data-scrollbar="true"]').slimScroll({destroy: true});
+                    $('#sidebar [data-scrollbar="true"]').removeAttr('style');
+                }
+
+                $('#sidebar [data-scrollbar=true]').trigger('mouseover');
+            } else if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                if ($('#sidebar .slimScrollDiv').length !== 0) {
+                    $('#sidebar [data-scrollbar="true"]').slimScroll({destroy: true});
+                    $('#sidebar [data-scrollbar="true"]').removeAttr('style');
+                }
+
+            }
+        } else {
+            $(targetContainer).addClass(sidebarClass);
+            
+            if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                if ($(targetContainer).hasClass('page-sidebar-fixed')) {
+                    $('#sidebar [data-scrollbar="true"]').slimScroll({destroy: true});
+                    $('#sidebar [data-scrollbar="true"]').removeAttr('style');
+                }
+                $('#sidebar [data-scrollbar=true]').trigger('mouseover');
+            } else {
+                $('#sidebar [data-scrollbar="true"]').css('margin-top','0');
+                $('#sidebar [data-scrollbar="true"]').css('overflow', 'visible');
+            }
+        }
+        $(window).trigger('resize');
+    });
+        $('#ajax-content').load('assets/ajax/inicio.php');
+
         function cargarContenido(div,URL){
           $(div).load(URL);
         }
 
         $("a[href$='usuarios']").click(function(event){
             event.preventDefault();
-            cargarContenido(('#content'),'assets/ajax/usuarios.html');
+            cargarContenido(('#ajax-content'),'assets/ajax/usuarios.html');
             return false;
         });
 
         $("a[href$='asignaciones']").click(function(event){
             event.preventDefault();
-            cargarContenido(('#content'),'assets/ajax/asignaciones.html');
+            cargarContenido(('#ajax-content'),'assets/ajax/asignaciones.html');
             return false;
         });
 
         $("a[href$='expedientes']").click(function(event){
             event.preventDefault();
-            cargarContenido(('#content'),'assets/ajax/expedientes.html');
+            cargarContenido(('#ajax-content'),'assets/ajax/expedientes.html');
             return false;
         });
-
-        var Check = $('#UserCheck').is(':checked');
-        $('#UserCheck').change(function(){
-          Check = $('#UserCheck').is(':checked');
+        $("a[href$='cerrar_session']").click(function(event){
+            event.preventDefault();
+            cargarContenido(('#ajax-content'),'assets/ajax/cerrar_session.php');
+            return false;
         });
-        $('#user_login').click(function(e){
-          e.preventDefault();
-          var Modal = $('#Estado_Modal');
-          var data  = {
-            NameUser:       $('#UserName').val(),
-            PasswordUser:   Sha256.hash($('#UserPassword').val()),
-            CheckUser:      Check
-          };
-          $.ajax({
-            type:          "post",
-            url:           "./controller/trigger/login_trigger.php",
-            async:         true,
-            cache:         false,
-            data:          JSON.stringify(data),
-            contentType:   "application/json; charset=utf-8",
-            dataType :     "json",
-            beforeSend:    function(response){
-            },
-            success:       function(response){
-              if(response.Success){
-                Modal.html('Ingresando al sistema....');
-                $('#My_Modal').modal('show');
-                setTimeout(function(){
-                    window.location.replace("./index.php");
-                }, 3000);
-              }
-              else{
-                Modal.html('Error al ingresar al sistema');
-                $('#My_Modal').modal('show');
-                setTimeout(function(){
-                    $('#My_Modal').modal('hide');
-                }, 3000);   
-              }
-            },
-            error:         function(response, error){
-              alert("Error Interno: " + error);
-            }  
-          });
-        return false;  
-      });
-    });
+});

@@ -2,16 +2,12 @@ $(document).ready(function(){
 	$.when($('#page-loader').addClass('hide')).done(function(){
 	  $('#page-container').addClass('in');
 	});
-	function cargarContenido(div,URL){
-	  $(div).load(URL);
-	}
 	var Check = $('#UserCheck').is(':checked');
 	$('#UserCheck').change(function(){
 	  Check = $('#UserCheck').is(':checked');
 	});
 	$('#user_login').click(function(e){
 	  e.preventDefault();
-	  var Modal = $('#Estado_Modal');
 	  var data  = {
 	    NameUser:       $('#UserName').val(),
 	    PasswordUser:   Sha256.hash($('#UserPassword').val()),
@@ -29,18 +25,11 @@ $(document).ready(function(){
 	    },
 	    success:       function(response){
 	      if(response.Success){
-	        Modal.html('Ingresando al sistema....');
-	        $('#My_Modal').modal('show');
-	        setTimeout(function(){
-	            window.location.replace("./index.php");
-	        }, 3000);
+	      window.location.replace("./index.php");
+	
 	      }
 	      else{
-	        Modal.html('Error al ingresar al sistema');
-	        $('#My_Modal').modal('show');
-	        setTimeout(function(){
-	            $('#My_Modal').modal('hide');
-	        }, 3000);   
+	      
 	      }
 	    },
 	    error:         function(response, error){
@@ -49,4 +38,4 @@ $(document).ready(function(){
 	  });
 	return false;  
 	});
-    });
+});

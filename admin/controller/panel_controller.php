@@ -21,13 +21,14 @@
       $this->USER_ACCESS = new User_Access_Model();
       $this->USER_ACCESS = $this->USER_ACCESS->get_Response();
     }
-    private function set_view(){
-      require_once($_SESSION['BASE_DIR_BACKEND'].'/model/class/user_access_model.php');
-      $this->USER_ACCESS = new User_Access_Model();
-      $this->USER_ACCESS = $this->USER_ACCESS->get_Response();
+    private function set_user_view(){
+      
     }
     public function Initialize(){
       require_once($_SESSION['BASE_DIR_BACKEND'].'/view/panel_view.php');
+      /*echo "<pre>";
+      print_r($this->USER_ACCESS);
+      echo "</pre>";*/
     }
     public function __destruct(){
     }

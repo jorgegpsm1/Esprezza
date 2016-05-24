@@ -26,7 +26,7 @@
           break;
 
         case '2.1':
-          return ("SELECT USER_DEPARTMENT_STATUS FROM DEPARTMENT_AREA_USER_ACCESS_{$KEY_1}_{$KEY_2} WHERE ID_USER = {$_SESSION['ID']}");
+          return ("SELECT USER_DEPARTMENT_AREA_STATUS FROM DEPARTMENT_AREA_USER_ACCESS_{$KEY_1}_{$KEY_2} WHERE ID_USER = {$_SESSION['ID']}");
 
           break;
 
@@ -109,7 +109,7 @@
                 $result = $this->Connection->prepare($this->set_Query($this->Response['DEPARTMENT']['DEPARTMENT_AREA'][$x],$key));
                 $result->execute();
                 while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                  if($row['USER_DEPARTMENT_STATUS'] == 1){
+                  if($row['USER_DEPARTMENT_AREA_STATUS'] == 1){
                     array_push($this->Response['DEPARTMENT']['AREA_TEMP'][$x], $key);
                   }
                 }
