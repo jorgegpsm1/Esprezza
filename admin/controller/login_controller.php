@@ -1,16 +1,15 @@
 <?php
   class Login_Controller{
-    private $Action = null;
     
     public function __construct(){
-      $this->Action = $_SESSION['ACTION'];
+      die('No se instancian objetos');
     }
-    public function Initialize(){
-      switch($this->Action){
-        case '1':
+    public static function Initialize(){
+      switch($_SESSION['ACTION']){
+        case ('1'):
           require_once($_SESSION['BASE_DIR_BACKEND'].'/view/login_view.php');
           break;
-        case '2':
+        case ('2'):
           require_once($_SESSION['BASE_DIR_BACKEND'].'/controller/trigger/login_trigger.php');
           break;
         default:
@@ -18,6 +17,7 @@
       }
     }
     public function __destruct(){
+      die('No se instancian objetos');
     }
   }
 ?>

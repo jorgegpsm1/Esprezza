@@ -77,6 +77,10 @@
 							case 3:
 								require_once($_SESSION['BASE_DIR_BACKEND'].'/assets/ajax/3/sistemas.php');
 							break;
+							
+							case 4:
+								require_once($_SESSION['BASE_DIR_BACKEND'].'/assets/ajax/3/sistemas.php');
+							break;
 						}
 					} 
 					?>

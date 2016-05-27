@@ -65,7 +65,6 @@ $(document).ready(function(){
         }
         $(window).trigger('resize');
     });
-        $('#ajax-content').load('assets/ajax/inicio.php');
 
         function cargarContenido(div,URL){
           $(div).load(URL);
@@ -77,12 +76,22 @@ $(document).ready(function(){
             return false;
         });
 
+        $("a[href$='departamentos']").click(function(event){
+            event.preventDefault();
+            cargarContenido(('#ajax-content'),'assets/ajax/departamentos.html');
+            return false;
+        });
+
         $("a[href$='asignaciones']").click(function(event){
             event.preventDefault();
             cargarContenido(('#ajax-content'),'assets/ajax/asignaciones.html');
             return false;
         });
-
+        $("a[href$='3_Pasivo_Nomina']").click(function(event){
+            event.preventDefault();
+            cargarContenido(('#ajax-content'),'assets/ajax/pasivos.php');
+            return false;
+        });
         $("a[href$='expedientes']").click(function(event){
             event.preventDefault();
             cargarContenido(('#ajax-content'),'assets/ajax/expedientes.html');

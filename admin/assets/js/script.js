@@ -6,6 +6,7 @@ $(document).ready(function(){
 	$('#UserCheck').change(function(){
 	  Check = $('#UserCheck').is(':checked');
 	});
+
 	$('#user_login').click(function(e){
 	  e.preventDefault();
 	  var data  = {
@@ -16,7 +17,7 @@ $(document).ready(function(){
 	  $.ajax({
 	    type:          "post",
 	    url:           "./controller/trigger/login_trigger.php",
-	    async:         true,
+	    async:         false,
 	    cache:         false,
 	    data:          JSON.stringify(data),
 	    contentType:   "application/json; charset=utf-8",
@@ -29,6 +30,7 @@ $(document).ready(function(){
 	
 	      }
 	      else{
+	      	alert("No entras");
 	      
 	      }
 	    },

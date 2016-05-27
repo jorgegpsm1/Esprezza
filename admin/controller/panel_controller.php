@@ -9,7 +9,7 @@
       $this->USER_ID        =   $_SESSION['ID'];
       $this->USER_SESSION   =   $_SESSION['SESSION'];
       //$this->get_USER_INFO();
-      $this->get_USER_ACCESS();
+      $this->get_user_access();
     }
     /*private function get_USER_INFO(){
       require_once($_SESSION['BASE_DIR_BACKEND'].'/model/class/user_info_model.php');
@@ -26,9 +26,7 @@
     }
     public function Initialize(){
       require_once($_SESSION['BASE_DIR_BACKEND'].'/view/panel_view.php');
-      /*echo "<pre>";
-      print_r($this->USER_ACCESS);
-      echo "</pre>";*/
+      
     }
     public function __destruct(){
     }
