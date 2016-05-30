@@ -1,65 +1,65 @@
 /*STATIC*/
-create table IF NOT EXISTS USER_ACCESS(
-	ID_USER tinyint NOT NULL AUTO_INCREMENT,
-	USER_LOGIN_NAME varchar(20) NOT NULL,
-	USER_LOGIN_PASS varchar(255) NOT NULL,
-	USER_STATUS tinyint(1) NOT NULL DEFAULT 1,
-	PRIMARY KEY(ID_USER)
+create table IF NOT EXISTS user_access(
+	id_user tinyint unsigned NOT NULL AUTO_INCREMENT,
+	user_login_name varchar(20) NOT NULL,
+	user_login_pass varchar(255) NOT NULL,
+	user_status tinyint(1) NOT NULL DEFAULT 1,
+	PRIMARY KEY(id_user)
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci AUTO_INCREMENT=1;
 
 /*STATIC*/
-create table IF NOT EXISTS USER_SESSION_ACCESS(
-	ID_USER tinyint NOT NULL,
-	USER_SESSIONS tinyint NOT NULL DEFAULT 0,
-	USER_SESSION_PASS varchar(255) NOT NULL,
-	PRIMARY KEY(ID_USER),
-	FOREIGN KEY(ID_USER) REFERENCES USER_ACCESS(ID_USER)
+create table IF NOT EXISTS user_session_access(
+	id_user tinyint unsigned NOT NULL,
+	user_sessions tinyint NOT NULL DEFAULT 0,
+	user_session_pass varchar(255) NOT NULL,
+	PRIMARY KEY(id_user),
+	FOREIGN KEY(id_user) REFERENCES user_access(id_user)
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
 
 /*DYNAMIC*/
 /*
 KEY_1 = USER_SESSIONS FROM TABLE USER_SESSION_ACCESS
  */
-create table IF NOT EXISTS USER_SESSIONS_ACCESS_{KEY_1}(
-	ID_SESSION tinyint NOT NULL,
-	USER_KEY  varchar(255) NOT NULL,
-	USER_DATE_CREATED TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	USER_DATE_CURRENT TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	USER_DATE_TEMP TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	USER_IP varchar(40) NOT NULL,
-	USER_BROWSER varchar(255) NOT NULL,
-	USER_SESSION_TEMP tinyint(1) NOT NULL DEFAULT 1,
-	UNIQUE (ID_SESSION)
+create table IF NOT EXISTS user_sessions_access_{KEY_1}(
+	id_session tinyint unsigned NOT NULL,
+	user_key  varchar(255) NOT NULL,
+	user_date_created TIMESTAMP ,
+	user_date_current TIMESTAMP,
+	user_date_temp TIMESTAMP,
+	user_ip varchar(40) NOT NULL,
+	user_browser varchar(255) NOT NULL,
+	user_session_temp tinyint(1) NOT NULL DEFAULT 1,
+	UNIQUE (id_session)
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
 
 /*STATIC*/
-create table IF NOT EXISTS DEPARTMENT(
-	ID_DEPARTMENT tinyint NOT NULL,
-	DEPARTMENT_NAME varchar(255) NOT NULL,
-	DEPARTMENT_STATUS tinyint(1) NOT NULL DEFAULT 1,
-	PRIMARY KEY(ID_DEPARTMENT)
+create table IF NOT EXISTS department(
+	id_department tinyint unsigned NOT NULL,
+	department_name varchar(255) NOT NULL,
+	department_status tinyint(1) NOT NULL DEFAULT 1,
+	PRIMARY KEY(id_department)
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
 
 /*DYNAMIC*/
 /*
 KEY_1 = ID_DEPARTMENT FROM TABLE DEPARTMENT
  */
-create table IF NOT EXISTS DEPARTMENT_USER_ACCESS_{KEY_1}(
-	ID_USER tinyint NOT NULL,
-	USER_DEPARTMENT_STATUS tinyint(1) NOT NULL DEFAULT 0,
-	PRIMARY KEY(ID_USER),
-	FOREIGN KEY(ID_USER) REFERENCES USER_ACCESS(ID_USER)
+create table IF NOT EXISTS department_user_access_{KEY_1}(
+	id_user tinyint unsigned NOT NULL,
+	user_department_status tinyint(1) NOT NULL DEFAULT 0,
+	PRIMARY KEY(id_user),
+	FOREIGN KEY(id_user) REFERENCES user_access(id_user)
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
 
 /*DYNAMIC*/
 /*
 KEY_1 = ID_DEPARTMENT FROM TABLE DEPARTAMENT
  */
-create table IF NOT EXISTS DEPARTMENT_AREA_{KEY_1}(
-	ID_AREA tinyint NOT NULL,
-	AREA_NAME varchar(100) NOT NULL,
-	AREA_STATUS tinyint(1) NOT NULL DEFAULT 1,
-	PRIMARY KEY(ID_AREA)
+create table IF NOT EXISTS department_area_{KEY_1}(
+	id_area tinyint unsigned NOT NULL,
+	area_name varchar(100) NOT NULL,
+	area_status tinyint(1) NOT NULL DEFAULT 1,
+	PRIMARY KEY(id_area)
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
 
 /*DYNAMIC*/
@@ -67,11 +67,11 @@ create table IF NOT EXISTS DEPARTMENT_AREA_{KEY_1}(
 KEY_1 = ID_DEPARTMENT FROM TABLE DEPARTMENT
 KEY_2 = ID_AREA FROM TABLE DEPARTENT_AREA_{KEY_1}
  */
-create table IF NOT EXISTS DEPARTMENT_AREA_USER_ACCESS_{KEY_1}_{KEY_2}(
-	ID_USER tinyint NOT NULL,
-	USER_DEPARTMENT_AREA_STATUS tinyint(1) NOT NULL DEFAULT 0,
-	PRIMARY KEY(ID_USER),
-	FOREIGN KEY(ID_USER) REFERENCES USER_ACCESS(ID_USER)
+create table IF NOT EXISTS department_area_user_access_{KEY_1}_{KEY_2}(
+	id_user tinyint unsigned NOT NULL,
+	user_department_area_status tinyint(1) NOT NULL DEFAULT 0,
+	PRIMARY KEY(id_user),
+	FOREIGN KEY(id_user) REFERENCES user_access(id_user)
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
 
 /*DYNAMIC*/
@@ -80,7 +80,7 @@ KEY_1 = ID_DEPARTMENT FROM TABLE DEPARMENT
 KEY_2 = ID_AREA FROM TABLE DEPARMENT_AREA_{KEY_1}
  */
 create table IF NOT EXISTS DEPARTMENT_AREA_MODULES_{KEY_1}_{KEY_2}(
-	ID_MODULE tinyint NOT NULL,
+	ID_MODULE tinyint unsigned NOT NULL,
 	MODULE_NAME varchar(100) NOT NULL,
 	MODULE_STATUS tinyint(1) NOT NULL DEFAULT 1
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
@@ -92,7 +92,7 @@ KEY_2 = ID_AREA FROM TABLE DEPARTMENT_AREA_{KEY_1}
 KEY_3 = ID_MODULE FROM TABLE DEPARTMENT_AREA_{KEY_1}_{KEY_2}
  */
 create table IF NOT EXISTS DEPARTMENT_AREA_MODULE_USER_ACCESS_{KEY_1}_{KEY_2}_{KEY_3}(
-	ID_USER tinyint NOT NULL,
+	ID_USER tinyint unsigned NOT NULL,
 	USER_DEPARTMENT_AREA_MODULE_ACCESS_STATUS tinyint(1) NOT NULL DEFAULT 0,
 	MODULE_READ tinyint(1) NOT NULL DEFAULT 0,
 	MODULE_CREATE tinyint(1) NOT NULL DEFAULT 0,
@@ -101,4 +101,3 @@ create table IF NOT EXISTS DEPARTMENT_AREA_MODULE_USER_ACCESS_{KEY_1}_{KEY_2}_{K
 	PRIMARY KEY(ID_USER),
 	FOREIGN KEY(ID_USER) REFERENCES USER_ACCESS(ID_USER)
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
-

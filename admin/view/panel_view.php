@@ -66,21 +66,24 @@
 					<?php 
 					foreach($this->USER_ACCESS[0] as $Department){
 						switch($Department){
+
 							case 1:
-								require_once($_SESSION['BASE_DIR_BACKEND'].'/assets/ajax/1/sistemas.php');
+								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/1/departament.php');
 							break;
 
 							case 2:
-								require_once($_SESSION['BASE_DIR_BACKEND'].'/assets/ajax/2/sistemas.php');
+								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/2/departament.php');
 							break;
 
 							case 3:
-								require_once($_SESSION['BASE_DIR_BACKEND'].'/assets/ajax/3/sistemas.php');
+								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/3/departament.php');
+							break;
+
+							case 4:
+								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/4/departament.php');
 							break;
 							
-							case 4:
-								require_once($_SESSION['BASE_DIR_BACKEND'].'/assets/ajax/3/sistemas.php');
-							break;
+
 						}
 					} 
 					?>

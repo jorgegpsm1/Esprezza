@@ -1,6 +1,17 @@
 <?php @session_start(); ?>
-
-<table border='0' width='50%' align='center'>
+<style> 
+.karla{
+  color: black;
+  font-size: 16px;
+  }
+  .jorge{
+  padding-left: -140px;
+  } 
+  </style>
+<div class="container karla">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <table border='0' width='50%' align='center'>
    
        <tr>
           <td colspan="2">&nbsp;</td>      
@@ -46,9 +57,9 @@
        
        <tr>
           <td colspan='2' align='center'>
-				<input type="button" value="ACEPTAR" onclick="trae_reporte()" class="btn"/>	
-				
-				<input type="button" value="LIMPIAR" onclick="limpiar_inputs()" class="btn"/>				
+        <input type="button" value="ACEPTAR" onclick="trae_reporte()" class="btn"/> 
+        
+        <input type="button" value="LIMPIAR" onclick="limpiar_inputs()" class="btn"/>       
           </td>      
        </tr>
        
@@ -61,17 +72,19 @@
          <td colspan="2" align="right">
          
               <form action="excel.php" method="post" target="_blank" id="FormularioExportacion">
-			     <p>Exportar a Excel  <img src="imagenes/export_to_excel.gif" class="botonExcel"/></p>
-			     <input type="hidden" id="datos_a_enviar" name="datos_a_enviar" />
-	          </form>
+           <p>Exportar a Excel  <img src="./assets/ajax/imagenes/export_to_excel.gif" class="botonExcel"/></p>
+           <input type="hidden" id="datos_a_enviar" name="datos_a_enviar" />
+            </form>
          
          </td>
        
        </tr>
    
-   </table>   
-   
-   <div class="container">
+   </table>
+    </div>
+  </div>   
+</div>
+   <div class="container jorge">
      <div id="div_resultados" name="div_resultados"></div>
    </div>
 
@@ -121,7 +134,7 @@ function trae_reporte(){
     
     
     //Añadimos la imagen de carga en el contenedor
-    $('#div_resultados').html('<center><img src="imagenes/loading.gif"/></center>');
+    $('#div_resultados').html('<center><img src="./assets/ajax/imagenes/loading.gif"/></center>');
         
   $.ajax({
       url: './assets/ajax/scripts_ajax/rpt_compac.php',
