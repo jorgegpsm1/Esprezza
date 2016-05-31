@@ -190,7 +190,7 @@ html {
     height: 100%;
 }
 body {
-    background: #d9e0e7;
+    background: #F1F3F6;
     font-size: 12px;
     font-family: 'Open Sans', "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #707478;
@@ -690,6 +690,7 @@ label {
 .sidebar .nav > li.nav-profile .image {
     width: 65px;
     height: 65px;
+    margin-left: 15px;
     overflow: hidden;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -700,6 +701,7 @@ label {
     max-height: 100%;
 }
 .sidebar .nav > li.nav-profile .info {
+    margin-left: 15px;
     padding-top:8px; 
     font-size: 14px;
 }
@@ -5727,7 +5729,7 @@ body.flat-black {
     right: 0;
     text-align: center;
     height: 3px;
-    background: #00acac;
+    background: #4889C3;
     -webkit-transition: width 1s;
     -moz-transition: width 1s;
     -o-transition: width 1s;
@@ -5752,8 +5754,8 @@ body.flat-black {
     width: 14px;
     height: 14px;
     border: solid 2px transparent;
-    border-top-color: #00acac;
-    border-left-color: #00acac;
+    border-top-color: #4889C3;
+    border-left-color: #4889C3;
     border-radius: 10px;
     -webkit-animation: pace-spinner 400ms linear infinite;
     -moz-animation: pace-spinner 400ms linear infinite;

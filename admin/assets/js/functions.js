@@ -73,18 +73,21 @@ $(document).ready(function(){
 
         $("a[href$='3_Pasivo_Nomina']").click(function(event){
             event.preventDefault();
+            Pace.restart();
             cargarContenido(('#ajax-content'),'assets/ajax/pasivos.php');
             return false;
         });
         
         $("a[href$='4_Head_Count']").click(function(event){
-            event.preventDefault();
+            event.preventDefault(); 
+            Pace.restart();        
             cargarContenido(('#ajax-content'),'assets/ajax/head_count.php');
             return false;
         });
 
         $("a[href$='cerrar_session']").click(function(event){
             event.preventDefault();
+            Pace.restart();
             cargarContenido(('#ajax-content'),'assets/ajax/cerrar_session.php');
             return false;
         });

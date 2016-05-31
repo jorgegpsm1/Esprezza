@@ -8,6 +8,25 @@ create table IF NOT EXISTS user_access(
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci AUTO_INCREMENT=1;
 
 /*STATIC*/
+create table IF NOT EXISTS user_job(
+	id_job tinyint unsigned NOT NULL AUTO_INCREMENT,
+	job_name varchar(60) NOT NULL,
+	job_status tinyint NOT NULL DEFAULT 0,
+	PRIMARY KEY(id_job)
+)ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci AUTO_INCREMENT=1;
+
+/*STATIC*/
+create table IF NOT EXISTS user_info(
+	id_user tinyint unsigned NOT NULL AUTO_INCREMENT,
+	user_name varchar(60) NOT NULL,
+	user_last_name varchar(60) NOT NULL,
+	id_job tinyint unsigned NOT NULL,
+	PRIMARY KEY(id_user),
+	FOREIGN KEY(id_job) REFERENCES user_job(id_job),
+	FOREIGN KEY(id_user) REFERENCES user_access(id_user)
+)ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci AUTO_INCREMENT=1;
+
+/*STATIC*/
 create table IF NOT EXISTS user_session_access(
 	id_user tinyint unsigned NOT NULL,
 	user_sessions tinyint NOT NULL DEFAULT 0,

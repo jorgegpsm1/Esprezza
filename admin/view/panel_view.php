@@ -15,7 +15,7 @@
 	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/animate/css/animate.min.css'); ?>" rel="stylesheet" />
   <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/css/style.css'); ?>" rel="stylesheet" />
 	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/css/style-responsive.css'); ?>" rel="stylesheet" />
-	<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/pace/pace.min.js'); ?>"></script>
+	<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/pace/pace.js'); ?>"></script>
 </head>
 <body>
 	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
@@ -64,28 +64,30 @@
 				<ul class="nav">
 					<li class="nav-header">Navegacion</li>
 					<?php 
-					foreach($this->USER_ACCESS[0] as $Department){
-						switch($Department){
-
+					$Department = count($this->USER_ACCESS[0]);
+					for($x=0; $x<$Department; $x++){
+						switch($this->USER_ACCESS[0][$x]){
 							case 1:
+								$Area = count($this->USER_ACCESS[1][$x]);
 								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/1/departament.php');
 							break;
 
 							case 2:
+								$Area = count($this->USER_ACCESS[1][$x]);
 								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/2/departament.php');
 							break;
 
 							case 3:
+								$Area = count($this->USER_ACCESS[1][$x]);
 								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/3/departament.php');
 							break;
 
 							case 4:
+								$Area = count($this->USER_ACCESS[1][$x]);
 								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/4/departament.php');
 							break;
-							
-
-						}
-					} 
+						}	
+					}
 					?>
 					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
 				</ul>
