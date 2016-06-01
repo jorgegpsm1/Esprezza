@@ -677,10 +677,10 @@ label {
     margin: 0;
 }
 .sidebar .nav > li.nav-profile {
-    padding-top: 35px;
-    padding-right: 35px;
-    padding-left: 10px;
-    padding-bottom: 35px;
+    padding-top: 20px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 20px;
     color: #fff;
     background: #1a2229;
 }
@@ -690,11 +690,11 @@ label {
 .sidebar .nav > li.nav-profile .image {
     width: 65px;
     height: 65px;
-    margin-left: 15px;
+    margin-left: 20px;
     overflow: hidden;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 .sidebar .nav > li.nav-profile .image img {
     max-width: 100%;

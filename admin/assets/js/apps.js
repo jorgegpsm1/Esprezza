@@ -728,7 +728,7 @@ var handleLoadPage = function(hash) {
 /* 17. Handle Ajax Page Load Url - added in V1.5
 ------------------------------------------------ */
 var handleCheckPageLoadUrl = function(hash) {
-    hash = (hash) ? hash : '#ajax/index_v2.html';
+    hash = (hash) ? hash : './assets/ajax/index.php';
     
     if (hash === '') {
         $('#ajax-content').html(default_content);
@@ -1239,3 +1239,30 @@ var App = function () {
 		}
     };
 }();
+$(document).ready(function(){
+    App.init();
+    function cargarContenido(div,URL){
+          $(div).load(URL);
+    
+    }
+    $("a[href$='3_Pasivo_Nomina']").click(function(event){
+            event.preventDefault();
+            Pace.restart();
+            cargarContenido(('#ajax-content'),'assets/ajax/pasivos.php');
+            return false;
+        });
+        
+        $("a[href$='4_Head_Count']").click(function(event){
+            event.preventDefault(); 
+            Pace.restart();        
+            cargarContenido(('#ajax-content'),'assets/ajax/head_count.php');
+            return false;
+        });
+
+        $("a[href$='cerrar_session']").click(function(event){
+            event.preventDefault();
+            Pace.restart();
+            cargarContenido(('#ajax-content'),'assets/ajax/cerrar_session.php');
+            return false;
+        });
+})

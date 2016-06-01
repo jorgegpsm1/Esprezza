@@ -13,8 +13,10 @@
 	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" />
 	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" />
 	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/animate/css/animate.min.css'); ?>" rel="stylesheet" />
+	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/bootstrap-fileinput/css/fileinput.css'); ?>" rel="stylesheet" />
   <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/css/style.css'); ?>" rel="stylesheet" />
 	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/css/style-responsive.css'); ?>" rel="stylesheet" />
+
 	<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/pace/pace.js'); ?>"></script>
 </head>
 <body>
@@ -28,7 +30,7 @@
 						<figure>
 							<img src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/login/esprezza_1.png'); ?>" alt="">
 						</figure>
-					</span> ESPREZZA</a>
+					</span>ESPREZZA</a>
 					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -53,7 +55,21 @@
 				<ul class="nav">
 					<li class="nav-profile">
 						<div class="image">
-							<a href="javascript:;"><img src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/user-13.jpg'); ?>" alt="" /></a>
+							<div class="kv-avatar center-block text-center">
+							<div class="file-input">
+							<figure>
+								<a href="">
+									<img style="width:160px" alt="Your Avatar" src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/default_avatar_male.jpg'); ?>">
+								</a>
+							</figure>
+							</div>
+							<div class="clearfix"></div>    
+							<div class="actions-profile hidden">
+							<div class="btn btn-primary btn-file" tabindex="500"><i class="glyphicon glyphicon-folder-open"></i> 
+							<input type="file" class="" name="avatar" id="avatar">
+							</div>
+							</div>
+							</div>
 						</div>
 						<div class="info">
 							Jorge Garcia
@@ -94,7 +110,8 @@
 			</div>
 		</div>
 		<div class="sidebar-bg"></div>
-		<div id="ajax-content"></div>
+		<div id="ajax-content">
+		</div>
 		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 	</div>
 	
@@ -102,6 +119,7 @@
   <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/jquery/jquery-migrate-1.1.0.min.js'); ?>"></script>
 	<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js'); ?>"></script>
 	<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/bootstrap/js/bootstrap.min.js'); ?>"></script>
+	<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/bootstrap-fileinput/js/fileinput.min.js'); ?>"></script>
 	<!--[if lt IE 9]>
 		<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/crossbrowserjs/html5shiv.js'); ?>"></script>
     <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/crossbrowserjs/respond.min.js'); ?>"></script>
@@ -111,6 +129,6 @@
 	<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/slimscroll/jquery.slimscroll.min.js'); ?>"></script>
 	<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/jquery-cookie/jquery.cookie.js'); ?>"></script>
 	<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/js/sha.js'); ?>"></script>
-  <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/js/functions.js'); ?>"></script>
+  <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/js/apps.js'); ?>"></script>
 </body>
 </html>
