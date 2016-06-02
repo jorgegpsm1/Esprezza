@@ -40,8 +40,8 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown navbar-user">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-							<img src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/user-13.jpg'); ?>" alt="" /> 
-							<span class="hidden-xs">Adam Schwartz</span> <b class="caret"></b>
+							<img src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/profile_img/'.$this->USER_INFO[0]['IMG']) ?>" alt="" /> 
+							<span class="hidden-xs"><?php echo ($this->USER_INFO[0]['NAME']) ?></span> <b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu animated fadeInLeft">
 							<li><a href="cerrar_session">Cerrar session</a></li>
@@ -55,25 +55,16 @@
 				<ul class="nav">
 					<li class="nav-profile">
 						<div class="image">
-							<div class="kv-avatar center-block text-center">
-							<div class="file-input">
-							<figure>
-								<a href="">
-									<img style="width:160px" alt="Your Avatar" src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/default_avatar_male.jpg'); ?>">
-								</a>
-							</figure>
-							</div>
-							<div class="clearfix"></div>    
-							<div class="actions-profile hidden">
-							<div class="btn btn-primary btn-file" tabindex="500"><i class="glyphicon glyphicon-folder-open"></i> 
-							<input type="file" class="" name="avatar" id="avatar">
-							</div>
-							</div>
+							<div class="image-upload">
+								<label for="file-input">
+									<img src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/profile_img/'.$this->USER_INFO[0]['IMG']) ?>">
+								</label>
+									<input type="file" id="file-input" />
 							</div>
 						</div>
 						<div class="info">
-							Jorge Garcia
-							<small>Developer</small>
+							<?php echo ($this->USER_INFO[0]['NAME']) ?>
+							<small><?php echo ($this->USER_INFO[0]['JOB']) ?></small>
 						</div>
 					</li>
 				</ul>

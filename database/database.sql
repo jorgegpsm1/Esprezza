@@ -17,12 +17,11 @@ create table IF NOT EXISTS user_job(
 
 /*STATIC*/
 create table IF NOT EXISTS user_info(
-	id_user tinyint unsigned NOT NULL AUTO_INCREMENT,
+	id_user tinyint unsigned NOT NULL,
+	id_job tinyint unsigned NOT NULL,
 	user_name varchar(60) NOT NULL,
 	user_last_name varchar(60) NOT NULL,
-
-	
-	id_job tinyint unsigned NOT NULL,
+	user_img varchar(120) NOT NULL,
 	PRIMARY KEY(id_user),
 	FOREIGN KEY(id_job) REFERENCES user_job(id_job),
 	FOREIGN KEY(id_user) REFERENCES user_access(id_user)

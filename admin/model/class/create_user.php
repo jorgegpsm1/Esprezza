@@ -1,6 +1,6 @@
 <?php
    @session_start();
-   require_once($_SESSION['BASE_DIR_BACKEND'].'/model/login_model.php'); 
+   require_once($_SESSION['BASE_DIR_BACKEND'].'/config/database.php'); 
    $Connection   = Database::Connect();
 	$Json = file_get_contents('php://input');
    $Input = json_decode($Json,true);

@@ -1158,7 +1158,6 @@ var handleClearSidebarMobileSelection = function() {
     $('#page-container').removeClass('page-sidebar-toggled');
 };
 
-
 /* Application Controller
 ------------------------------------------------ */
 var App = function () {
@@ -1239,6 +1238,7 @@ var App = function () {
 		}
     };
 }();
+
 $(document).ready(function(){
     App.init();
     function cargarContenido(div,URL){
@@ -1262,7 +1262,50 @@ $(document).ready(function(){
         $("a[href$='cerrar_session']").click(function(event){
             event.preventDefault();
             Pace.restart();
-            cargarContenido(('#ajax-content'),'assets/ajax/cerrar_session.php');
+            $.getJSON("./model/class/user_end.php", function(){
+              console.log("success");
+              })
+              .done(function(response,statusText,jqXhr){
+                if(response.Success){
+                    window.location.replace("./index.php");    
+                }
+              })
+              .fail(function(){
+              })
+              .always(function(){
+              });
             return false;
         });
-})
+        $('input[type=file]').on('change', function(event){
+            var file = event.target.files;
+            var data = new FormData();
+            Pace.restart(); 
+            $.each(file, function(key, value){
+                data.append(key, value);
+            });
+            $.ajax({
+                type:          "post",
+                url:           "./model/class/user_img.php",
+                async:         true,
+                cache:         false,
+                data:          data,
+                processData:   false,
+                contentType:   false,
+                dataType :     "json",
+                beforeSend:    function(response){
+                },
+                success: function(response){
+                  if(response.Success){
+
+                  }
+                  else{
+                    alert("No entras");
+                  
+                  }
+                },
+                error: function(response, error){
+                  alert("Error Interno: " + error);
+                }  
+            });
+        });
+});

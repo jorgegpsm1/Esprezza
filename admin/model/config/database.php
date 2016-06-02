@@ -14,7 +14,8 @@
       if(null == self::$count){
         try{
           self::$count = new PDO("mysql:host=".self::$dbHost.";"."dbname=".self::$dbName,self::$dbUserName,self::$dbUserPassword);
-          self::$count->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+          self::$count->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+          self::$count->exec("set names utf8");
         }
         catch(PDOException $e){
           die($e->getMessage());
