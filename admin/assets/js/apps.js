@@ -1242,26 +1242,23 @@ var App = function () {
 $(document).ready(function(){
     App.init();
     function cargarContenido(div,URL){
-          $(div).load(URL);
-    
+        Pace.restart(); 
+        $(div).load(URL);
     }
-    $("a[href$='3_Pasivo_Nomina']").click(function(event){
+        $("a[href$='3_Pasivo_Nomina']").click(function(event){
             event.preventDefault();
-            Pace.restart();
             cargarContenido(('#ajax-content'),'assets/ajax/pasivos.php');
             return false;
         });
         
         $("a[href$='4_Head_Count']").click(function(event){
-            event.preventDefault(); 
-            Pace.restart();        
+            event.preventDefault();       
             cargarContenido(('#ajax-content'),'assets/ajax/head_count.php');
             return false;
         });
 
         $("a[href$='cerrar_session']").click(function(event){
             event.preventDefault();
-            Pace.restart();
             $.getJSON("./model/class/user_end.php", function(){
               console.log("success");
               })
@@ -1279,32 +1276,37 @@ $(document).ready(function(){
         $('input[type=file]').on('change', function(event){
             var file = event.target.files;
             var data = new FormData();
-            Pace.restart(); 
             $.each(file, function(key, value){
                 data.append(key, value);
             });
             $.ajax({
                 type:          "post",
-                url:           "./model/class/user_img.php",
+                url:           "./model/class/user_img.php?file",
                 async:         true,
                 cache:         false,
                 data:          data,
                 processData:   false,
                 contentType:   false,
                 dataType :     "json",
-                beforeSend:    function(response){
+                beforeSend:    function(Response){
                 },
-                success: function(response){
-                  if(response.Success){
+                success: function(Response){
+                  if(Response.Success){
+                    Pace.restart();
+                    var val = $("#profile_img_header").attr('src');
+                    var strin = val.split('profile_img/',2);
+                    $("#profile_img_header").attr("src", strin[0]+"profile_img/"+Response.Url);
 
+                    var val = $("#profile_img_sidebar").attr('src');
+                    var strin = val.split('profile_img/',2);
+                    $("#profile_img_sidebar").attr("src", strin[0]+"profile_img/"+Response.Url);
                   }
                   else{
-                    alert("No entras");
                   
                   }
                 },
-                error: function(response, error){
-                  alert("Error Interno: " + error);
+                error: function(Response, error){
+                  
                 }  
             });
         });

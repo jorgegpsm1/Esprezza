@@ -40,7 +40,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown navbar-user">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-							<img src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/profile_img/'.$this->USER_INFO[0]['IMG']) ?>" alt="" /> 
+							<img id="profile_img_header" src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/profile_img/'.$this->USER_INFO[0]['IMG']) ?>" alt="" /> 
 							<span class="hidden-xs"><?php echo ($this->USER_INFO[0]['NAME']) ?></span> <b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu animated fadeInLeft">
@@ -57,9 +57,9 @@
 						<div class="image">
 							<div class="image-upload">
 								<label for="file-input">
-									<img src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/profile_img/'.$this->USER_INFO[0]['IMG']) ?>">
+									<img id="profile_img_sidebar" src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/profile_img/'.$this->USER_INFO[0]['IMG']) ?>">
 								</label>
-									<input type="file" id="file-input" />
+									<input type="file" id="file-input" accept="image/*" />
 							</div>
 						</div>
 						<div class="info">

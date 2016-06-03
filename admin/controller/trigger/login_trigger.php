@@ -15,8 +15,8 @@
       switch ($this->Action){
         case '1':
           $this->Request = null;
-          $Json = file_get_contents('php://input');
-          $Input = json_decode($Json,true);
+          $Json   = file_get_contents('php://input');
+          $Input  = json_decode($Json,true);
           if($this->is_Request($Input)){
             $this->Request                      = $Input;
             $this->Request['NameUser']          = stripslashes(strip_tags(htmlspecialchars(trim($this->Request['NameUser']))));
@@ -104,9 +104,6 @@
             header("Location: {$_SESSION['BASE_DIR_FRONTEND']}/index.php");
             exit();
           }
-          break;
-
-        default:
           break;
       }
     } 
