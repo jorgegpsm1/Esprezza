@@ -11,12 +11,11 @@
 			</a>		
 			<ul class="sub-menu">
 			<?php
-				foreach($this->USER_ACCESS[1][$x] as $Area){
+				foreach(self::$USER_ACCESS[1][$x] as $Area){
 					switch($Area){
 					case 1:
 					require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/1/area/1.php');
 					break;
-					
 					}
 				} 
 			?>		

@@ -1,30 +1,28 @@
 <?php
   class Panel_Controller{
-    private $USER_ID;
-    private $USER_SESSION;
-    private $USER_INFO;
-    private $USER_ACCESS;
+    private static $USER_INFO;
+    private static $USER_ACCESS;
     
     public function __construct(){
-      $this->USER_ID        =   $_SESSION['ID'];
-      $this->USER_SESSION   =   $_SESSION['SESSION'];
-      $this->get_user_info();
-      $this->get_user_access();
+      die('No se instancian objetos');
     }
-    private function get_user_info(){
+    private static function get_user_info(){
       require_once($_SESSION['BASE_DIR_BACKEND'].'/model/class/user_info.php');
-      $this->USER_INFO = new user_info();
-      $this->USER_INFO = $this->USER_INFO->get_Response();
+      self::$USER_INFO = new user_info();
+      self::$USER_INFO = self::$USER_INFO->get_Response();
     }
-    private function get_user_access(){
+    private static function get_user_access(){
       require_once($_SESSION['BASE_DIR_BACKEND'].'/model/class/user_access.php');
-      $this->USER_ACCESS = new user_access();
-      $this->USER_ACCESS = $this->USER_ACCESS->get_Response();
+      self::$USER_ACCESS = new user_access();
+      self::$USER_ACCESS = self::$USER_ACCESS->get_Response();
     }
-    public function Initialize(){
+    public static function Initialize(){
+      self::get_user_info();
+      self::get_user_access();
       require_once($_SESSION['BASE_DIR_BACKEND'].'/view/panel_view.php');
     }
     public function __destruct(){
+      die('No se instancian objetos');
     }
   }
 ?>

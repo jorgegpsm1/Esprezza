@@ -86,6 +86,12 @@ $(document).ready(function(){
           $(div).load(URL);
         }
         
+        $("a[href$='1_usuarios']").click(function(event){
+            event.preventDefault();
+            Pace.restart();
+            cargarContenido(('#ajax-content'),'assets/ajax/department/1/usuarios.php');
+            return false;
+        });
 
         $("a[href$='3_Pasivo_Nomina']").click(function(event){
             event.preventDefault();

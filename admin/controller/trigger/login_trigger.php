@@ -59,9 +59,6 @@
             die("Error Interno");
           }
           break;
-
-        default:
-          break;
       }
     }
     private function set_Response(){

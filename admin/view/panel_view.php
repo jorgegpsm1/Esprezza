@@ -25,7 +25,7 @@
 		<div id="header" class="header navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a href="index.html" class="navbar-brand">
+					<a href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/index.php'); ?>" class="navbar-brand">
 					<span class="navbar-logo">
 						<figure>
 							<img src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/login/esprezza_1.png'); ?>" alt="">
@@ -40,8 +40,8 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown navbar-user">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-							<img id="profile_img_header" src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/profile_img/'.$this->USER_INFO[0]['IMG']) ?>" alt="" /> 
-							<span class="hidden-xs"><?php echo ($this->USER_INFO[0]['NAME']) ?></span> <b class="caret"></b>
+							<img id="profile_img_header" src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/profile_img/'.self::$USER_INFO[0]['IMG']) ?>" alt="" /> 
+							<span class="hidden-xs"><?php echo (self::$USER_INFO[0]['NAME']) ?></span> <b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu animated fadeInLeft">
 							<li><a href="cerrar_session">Cerrar session</a></li>
@@ -57,40 +57,40 @@
 						<div class="image">
 							<div class="image-upload">
 								<label for="file-input">
-									<img id="profile_img_sidebar" src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/profile_img/'.$this->USER_INFO[0]['IMG']) ?>">
+									<img id="profile_img_sidebar" src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/profile_img/'.self::$USER_INFO[0]['IMG']) ?>">
 								</label>
 									<input type="file" id="file-input" accept="image/*" />
 							</div>
 						</div>
 						<div class="info">
-							<?php echo ($this->USER_INFO[0]['NAME']) ?>
-							<small><?php echo ($this->USER_INFO[0]['JOB']) ?></small>
+							<?php echo (self::$USER_INFO[0]['NAME']) ?>
+							<small><?php echo (self::$USER_INFO[0]['JOB']) ?></small>
 						</div>
 					</li>
 				</ul>
 				<ul class="nav">
 					<li class="nav-header">Navegacion</li>
 					<?php 
-					$Department = count($this->USER_ACCESS[0]);
+					$Department = count(self::$USER_ACCESS[0]);
 					for($x=0; $x<$Department; $x++){
-						switch($this->USER_ACCESS[0][$x]){
+						switch(self::$USER_ACCESS[0][$x]){
 							case 1:
-								$Area = count($this->USER_ACCESS[1][$x]);
+								$Area = count(self::$USER_ACCESS[1][$x]);
 								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/1/departament.php');
 							break;
 
 							case 2:
-								$Area = count($this->USER_ACCESS[1][$x]);
+								$Area = count(self::$USER_ACCESS[1][$x]);
 								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/2/departament.php');
 							break;
 
 							case 3:
-								$Area = count($this->USER_ACCESS[1][$x]);
+								$Area = count(self::$USER_ACCESS[1][$x]);
 								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/3/departament.php');
 							break;
 
 							case 4:
-								$Area = count($this->USER_ACCESS[1][$x]);
+								$Area = count(self::$USER_ACCESS[1][$x]);
 								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/4/departament.php');
 							break;
 						}	

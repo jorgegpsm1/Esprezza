@@ -1245,69 +1245,75 @@ $(document).ready(function(){
         Pace.restart(); 
         $(div).load(URL);
     }
-        $("a[href$='3_Pasivo_Nomina']").click(function(event){
-            event.preventDefault();
-            cargarContenido(('#ajax-content'),'assets/ajax/pasivos.php');
-            return false;
-        });
-        
-        $("a[href$='4_Head_Count']").click(function(event){
-            event.preventDefault();       
-            cargarContenido(('#ajax-content'),'assets/ajax/head_count.php');
-            return false;
-        });
+    $("a[href$='1_usuarios']").click(function(event){
+        event.preventDefault();
+        Pace.restart();
+        cargarContenido(('#ajax-content'),'assets/ajax/department/1/usuarios.php');
+        return false;
+    });
+    $("a[href$='3_Pasivo_Nomina']").click(function(event){
+        event.preventDefault();
+        cargarContenido(('#ajax-content'),'assets/ajax/pasivos.php');
+        return false;
+    });
+    
+    $("a[href$='4_Head_Count']").click(function(event){
+        event.preventDefault();       
+        cargarContenido(('#ajax-content'),'assets/ajax/head_count.php');
+        return false;
+    });
 
-        $("a[href$='cerrar_session']").click(function(event){
-            event.preventDefault();
-            $.getJSON("./model/class/user_end.php", function(){
-              console.log("success");
-              })
-              .done(function(response,statusText,jqXhr){
-                if(response.Success){
-                    window.location.replace("./index.php");    
-                }
-              })
-              .fail(function(){
-              })
-              .always(function(){
-              });
-            return false;
+    $("a[href$='cerrar_session']").click(function(event){
+        event.preventDefault();
+        $.getJSON("./model/class/user_end.php", function(){
+          console.log("success");
+          })
+          .done(function(response,statusText,jqXhr){
+            if(response.Success){
+                window.location.replace("./index.php");    
+            }
+          })
+          .fail(function(){
+          })
+          .always(function(){
+          });
+        return false;
+    });
+    $('input[type=file]').on('change', function(event){
+        var file = event.target.files;
+        var data = new FormData();
+        $.each(file, function(key, value){
+            data.append(key, value);
         });
-        $('input[type=file]').on('change', function(event){
-            var file = event.target.files;
-            var data = new FormData();
-            $.each(file, function(key, value){
-                data.append(key, value);
-            });
-            $.ajax({
-                type:          "post",
-                url:           "./model/class/user_img.php?file",
-                async:         true,
-                cache:         false,
-                data:          data,
-                processData:   false,
-                contentType:   false,
-                dataType :     "json",
-                beforeSend:    function(Response){
-                },
-                success: function(Response){
-                  if(Response.Success){
-                    Pace.restart();
-                    var val = $("#profile_img_header").attr('src');
-                    var strin = val.split('profile_img/',2);
-                    $("#profile_img_header").attr("src", strin[0]+"profile_img/"+Response.Url);
+        $.ajax({
+            type:          "post",
+            url:           "./model/class/user_img.php?file",
+            async:         true,
+            cache:         false,
+            data:          data,
+            processData:   false,
+            contentType:   false,
+            dataType :     "json",
+            beforeSend:    function(Response){
+            },
+            success: function(Response){
+              if(Response.Success){
+                Pace.restart();
+                var val = $("#profile_img_header").attr('src');
+                var strin = val.split('profile_img/',2);
+                $("#profile_img_header").attr("src", strin[0]+"profile_img/"+Response.Url);
 
-                    var val = $("#profile_img_sidebar").attr('src');
-                    var strin = val.split('profile_img/',2);
-                    $("#profile_img_sidebar").attr("src", strin[0]+"profile_img/"+Response.Url);
-                  }
-                  else{
-                  
-                  }
-                },
-                error: function(Response, error){
-                  
-                }  
-            });
+                var val = $("#profile_img_sidebar").attr('src');
+                var strin = val.split('profile_img/',2);
+                $("#profile_img_sidebar").attr("src", strin[0]+"profile_img/"+Response.Url);
+              }
+              else{
+              
+              }
+            },
+            error: function(Response, error){
+              
+            }  
+        });
         });
 });
