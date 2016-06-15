@@ -8,22 +8,31 @@ create table IF NOT EXISTS user_access(
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci AUTO_INCREMENT=1;
 
 /*STATIC*/
-create table IF NOT EXISTS user_job(
+create table IF NOT EXISTS jobs(
 	id_job tinyint unsigned NOT NULL AUTO_INCREMENT,
 	job_name varchar(60) NOT NULL,
-	job_status tinyint NOT NULL DEFAULT 0,
 	PRIMARY KEY(id_job)
+)ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci AUTO_INCREMENT=1;
+
+/*DYNAMIC*/
+/*
+KEY_1 = id_job FROM jobs
+ */
+create table IF NOT EXISTS roles_{KEY_1}(
+	id_role tinyint unsigned NOT NULL AUTO_INCREMENT,
+	role_name varchar(60) NOT NULL,
+	PRIMARY KEY(id_role)
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci AUTO_INCREMENT=1;
 
 /*STATIC*/
 create table IF NOT EXISTS user_info(
 	id_user tinyint unsigned NOT NULL,
 	id_job tinyint unsigned NOT NULL,
+	id_role tinyint unsigned NOT NULL,
 	user_name varchar(60) NOT NULL,
 	user_last_name varchar(60) NOT NULL,
 	user_img varchar(120) NOT NULL,
 	PRIMARY KEY(id_user),
-	FOREIGN KEY(id_job) REFERENCES user_job(id_job),
 	FOREIGN KEY(id_user) REFERENCES user_access(id_user)
 )ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_spanish2_ci AUTO_INCREMENT=1;
 

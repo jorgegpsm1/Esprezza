@@ -10,9 +10,9 @@
 
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css'); ?>" rel="stylesheet" />
-	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" />
-	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" />
-	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/animate/css/animate.min.css'); ?>" rel="stylesheet" />
+	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/bootstrap/css/bootstrap.css'); ?>" rel="stylesheet" />
+	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/font-awesome/css/font-awesome.css'); ?>" rel="stylesheet" />
+	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/animate/css/animate.css'); ?>" rel="stylesheet" />
 	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/bootstrap-fileinput/css/fileinput.css'); ?>" rel="stylesheet" />
   <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/css/style.css'); ?>" rel="stylesheet" />
 	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/css/style-responsive.css'); ?>" rel="stylesheet" />
@@ -43,8 +43,12 @@
 							<img id="profile_img_header" src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/img/profile_img/'.self::$USER_INFO[0]['IMG']) ?>" alt="" /> 
 							<span class="hidden-xs"><?php echo (self::$USER_INFO[0]['NAME']) ?></span> <b class="caret"></b>
 						</a>
-						<ul class="dropdown-menu animated fadeInLeft">
-							<li><a href="cerrar_session">Cerrar session</a></li>
+						<ul class="dropdown-menu animated fadeInLeft" role="menu">
+							<li class="arrow"></li>
+							<li><a href="javascript:;" class="text-left"><i class="fa fa-user"></i>Perfil</a></li>
+							<li><a href="javascript:;" class="text-left"><i class="fa fa-cog"></i>Ajustes</a></li>
+							<li class="divider"></li>
+							<li><a href="cerrar_session" class="text-center">Cerrar session</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -64,7 +68,7 @@
 						</div>
 						<div class="info">
 							<?php echo (self::$USER_INFO[0]['NAME']) ?>
-							<small><?php echo (self::$USER_INFO[0]['JOB']) ?></small>
+							<small><?php echo (self::$USER_INFO[0]['ROLE_NAME']) ?></small>
 						</div>
 					</li>
 				</ul>
@@ -101,8 +105,8 @@
 			</div>
 		</div>
 		<div class="sidebar-bg"></div>
-		<div id="ajax-content">
-		</div>
+		<div id="ajax-content"></div>
+
 		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 	</div>
 	
@@ -121,5 +125,10 @@
 	<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/jquery-cookie/jquery.cookie.js'); ?>"></script>
 	<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/js/sha.js'); ?>"></script>
   <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/js/apps.js'); ?>"></script>
+  <script>
+  	var Setting = {
+  			base_url : "<?php echo ($_SESSION['BASE_DIR_FRONTEND']); ?>"
+  	};
+  </script>
 </body>
 </html>

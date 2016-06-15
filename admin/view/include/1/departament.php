@@ -7,7 +7,7 @@
 	<ul class="sub-menu">		
 		<li class="has-sub">		
 			<a href="javascript:;">		
-				<b class="caret pull-right"></b>Administracion usuarios		
+				<b class="caret pull-right"></b>Administracion de Empleados		
 			</a>		
 			<ul class="sub-menu">
 			<?php

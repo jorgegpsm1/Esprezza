@@ -1,1 +1,1 @@
-<li><a href="1_usuarios">Usuarios</a></li>
+<li><a href="1_registro">Registro Empleados</a></li>

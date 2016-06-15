@@ -1220,7 +1220,7 @@ var App = function () {
 			
 			// ajax cache setup
 			$.ajaxSetup({
-                cache: true
+                cache: false
             });
 		},
 		setPageTitle: function(pageTitle) {
@@ -1245,10 +1245,9 @@ $(document).ready(function(){
         Pace.restart(); 
         $(div).load(URL);
     }
-    $("a[href$='1_usuarios']").click(function(event){
+    $("a[href$='1_registro']").click(function(event){
         event.preventDefault();
-        Pace.restart();
-        cargarContenido(('#ajax-content'),'assets/ajax/department/1/usuarios.php');
+        cargarContenido(('#ajax-content'),'assets/ajax/department/1/1_registro.php');
         return false;
     });
     $("a[href$='3_Pasivo_Nomina']").click(function(event){
