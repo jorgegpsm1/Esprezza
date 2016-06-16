@@ -1,5 +1,5 @@
 <?php
-   @session_start();
+  @session_start();
   require_once($_SESSION['BASE_DIR_BACKEND'].'/model/config/database.php');
   class users_load{
     private $Request;
@@ -11,7 +11,7 @@
       $this->Connection    = Database::Connect();
       $this->set_Request($Input);
     }
-    private function set_Query($KEY_1 = 0, $KEY_2 = 0){
+    private function set_Query($KEY_1 = 0, $KEY_2 = 0, $KEY_3 = 0){
       switch ($this->Action){
         case ('0'):
           /*return ("SELECT id_user AS usuario, CONCAT(user_name,' ',user_last_name) AS nombre, id_job AS puesto FROM user_info");

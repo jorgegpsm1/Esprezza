@@ -13,13 +13,13 @@
     }
     private static function get_user_access(){
       require_once($_SESSION['BASE_DIR_BACKEND'].'/model/class/user_access.php');
-      self::$USER_ACCESS = new user_access();
+      self::$USER_ACCESS = new user_access(array("Action" => "0"));
       self::$USER_ACCESS = self::$USER_ACCESS->get_Response();
     }
     public static function Initialize(){
       self::get_user_info();
       self::get_user_access();
-      require_once($_SESSION['BASE_DIR_BACKEND'].'/view/panel_view.php');
+      //require_once($_SESSION['BASE_DIR_BACKEND'].'/view/panel_view.php');
     }
     public function __destruct(){
       die('No se instancian objetos');

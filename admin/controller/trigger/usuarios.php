@@ -3,7 +3,7 @@
     die('Error Intenro');
   }
     @session_start();
-    require_once($_SESSION['BASE_DIR_BACKEND'].'/model/class/users_load.php');
+    require_once($_SESSION['BASE_DIR_BACKEND'].'/model/class/user_load.php');
     class Usuarios{
       private static $Request;
       private static $Response;
