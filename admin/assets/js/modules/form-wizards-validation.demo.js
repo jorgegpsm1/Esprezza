@@ -73,7 +73,8 @@ var Obtener_Permisos = function(){
         Val_1=1;
         Departamentos+="<div class='col-md-4 col-md-offset-4'>";
         Departamentos+="<div class='form-group'> ";
-        Departamentos+="<h4>Departamentos</h4>";
+        Departamentos+="<h4 class='text-center'>DEPARTAMENTOS</h4>";
+        Departamentos+="<hr />";
         Departamentos+="<ul id='dept' class='list-group'>";
         $.each(Response.DEPARTAMENTOS,function(){
           $.each(this, function(Key, Value){
@@ -93,6 +94,10 @@ var Obtener_Permisos = function(){
         Departamentos+="</div>";
         Departamentos+="<div class='clearfix'></div>";
         $("#permisos").append(Departamentos);
+
+        $("#permisos").append("<div class='clearfix'></div>");
+
+        $("#permisos").append("<h4 class='text-center'>AREAS</h4><hr>");
 
           Val_2=1;
           $.each(Response.AREAS,function(){
@@ -115,6 +120,10 @@ var Obtener_Permisos = function(){
             Areas+="</div>"
           });
           $("#permisos").append(Areas);
+
+          $("#permisos").append("<div class='clearfix'></div>");
+
+          $("#permisos").append("<h4 class='text-center'>MODULOS</h4><hr>");
     },function(){
       var Check;
       $("input[id^='Dpt_']").change(function(){
@@ -126,7 +135,7 @@ var Obtener_Permisos = function(){
         }
         else{
           $("input[id^='Area_"+Str[1]+"']").prop("disabled",true);
-           $("input[id^='Area_"+Str[1]+"']").prop('checked', false);
+          $("input[id^='Area_"+Str[1]+"']").prop('checked', false);
         }
       });
      
@@ -137,8 +146,9 @@ var Obtener_Permisos = function(){
     });
 }
 
-var handleBootstrapWizardsValidation = function() {
+var handleBootstrapWizardsValidation = function(){
 	"use strict";
+  $("#content").removeClass('hidden');
 	$("#wizard").bwizard({ validating: function (e, ui) { 
 	        if (ui.index == 0){
                 if (false === $('form[name="form-wizard"]').parsley().validate('wizard-step-1')){
@@ -238,10 +248,10 @@ var FormWizardValidation = function (){
 	"use strict";
     return {
         init: function () {
-            $.getScript('./assets/plugins/parsley/dist/parsley.js').done(function() {
-                $.getScript('./assets/plugins/bootstrap-wizard/js/bwizard.js').done(function(){
+            $.getScript(Setting.base_url+'/assets/plugins/parsley/dist/parsley.js').done(function(){
+                $.getScript(Setting.base_url+'/assets/plugins/bootstrap-wizard/js/bwizard.js').done(function(){
                     $.getScript(Setting.base_url+'/assets/plugins/bootstrap-select/dist/js/bootstrap-select.js').done(function(){
-                        handleBootstrapWizardsValidation();                    
+                        handleBootstrapWizardsValidation();                 
                     });
                 });
             });

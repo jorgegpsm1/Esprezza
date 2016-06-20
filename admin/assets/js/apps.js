@@ -1241,25 +1241,37 @@ var App = function () {
 
 $(document).ready(function(){
     App.init();
+    var Active_1 = $("#lol");
+    var Active_2 = $("#lol");;
+    var Active_3 = $("#lol");
+
     function cargarContenido(div,URL){
-        Pace.restart(); 
-        $(div).load(URL);
+      Pace.restart(); 
+      $(div).load(URL);
     }
-    $("a[href$='1_registro']").click(function(event){
-        event.preventDefault();
-        cargarContenido(('#ajax-content'),'assets/ajax/department/1/1_registro.php');
-        return false;
-    });
-    $("a[href$='3_Pasivo_Nomina']").click(function(event){
-        event.preventDefault();
-        cargarContenido(('#ajax-content'),'assets/ajax/pasivos.php');
-        return false;
-    });
-    
-    $("a[href$='4_Head_Count']").click(function(event){
-        event.preventDefault();       
-        cargarContenido(('#ajax-content'),'assets/ajax/head_count.php');
-        return false;
+    $("a[href^='urls']").click(function(event){
+      event.preventDefault();          
+      if(Active_3!=$(this).parent()){
+        Active_3.removeClass('active');
+        $(this).parent().addClass('active');
+        Active_3=$(this).parent();
+
+        if(Active_2!=$(this).parent().parent().parent()){
+          Active_2.removeClass('active');
+          $(this).parent().parent().parent().addClass('active');
+          Active_2=$(this).parent().parent().parent();
+        }
+
+        if(Active_1!=$(this).parent().parent().parent().parent().parent()){
+          Active_1.removeClass('active');
+          $(this).parent().parent().parent().parent().parent().addClass('active');
+          Active_1=$(this).parent().parent().parent().parent().parent();
+        }
+      }  
+      var String_HREF = $(this).attr('href');
+      var Values = String_HREF.split('_',4);
+      cargarContenido(("#ajax-content"),"./assets/ajax/include/"+Values[1]+"_"+Values[2]+"_"+Values[3]+"/index.php");
+      return false;
     });
 
     $("a[href$='cerrar_session']").click(function(event){

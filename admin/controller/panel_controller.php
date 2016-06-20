@@ -19,7 +19,7 @@
     public static function Initialize(){
       self::get_user_info();
       self::get_user_access();
-      //require_once($_SESSION['BASE_DIR_BACKEND'].'/view/panel_view.php');
+      require_once($_SESSION['BASE_DIR_BACKEND'].'/view/panel_view.php');
     }
     public function __destruct(){
       die('No se instancian objetos');

@@ -2,7 +2,8 @@
 <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/bootstrap-wizard/css/bwizard.css'); ?>" rel="stylesheet" />
 <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/parsley/src/parsley.css'); ?>" rel="stylesheet" />
 <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/bootstrap-select/dist/css/bootstrap-select.css'); ?>" rel="stylesheet" />
-<div id="content" class="content">
+
+<div id="content" class="content hidden">
 	<h1 class="page-header">Registro de empleados</h1>
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ui-sortable">
@@ -128,13 +129,13 @@
               </div>
             </form>
           </div>
-        </div>        
+      </div>        
     </div>
 	</div>
 </div>
 <script>
-    App.restartGlobalFunction();
-    $.getScript('<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/form-wizards-demo/js/form-wizards-validation.demo.js'); ?>').done(function(){
-        FormWizardValidation.init();
-    });
-  </script>
+  App.restartGlobalFunction();
+  $.getScript('<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/js/modules/form-wizards-validation.demo.js'); ?>').done(function(){
+      FormWizardValidation.init();
+  });
+</script>

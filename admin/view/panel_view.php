@@ -72,33 +72,13 @@
 						</div>
 					</li>
 				</ul>
-				<ul class="nav">
+				<ul id="sidebar_dept" class="nav">
 					<li class="nav-header">Navegacion</li>
 					<?php 
-					$Department = count(self::$USER_ACCESS[0]);
-					for($x=0; $x<$Department; $x++){
-						switch(self::$USER_ACCESS[0][$x]){
-							case 1:
-								$Area = count(self::$USER_ACCESS[1][$x]);
-								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/1/departament.php');
-							break;
-
-							case 2:
-								$Area = count(self::$USER_ACCESS[1][$x]);
-								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/2/departament.php');
-							break;
-
-							case 3:
-								$Area = count(self::$USER_ACCESS[1][$x]);
-								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/3/departament.php');
-							break;
-
-							case 4:
-								$Area = count(self::$USER_ACCESS[1][$x]);
-								require_once($_SESSION['BASE_DIR_BACKEND'].'/view/include/4/departament.php');
-							break;
-						}	
-					}
+						$Department = count(self::$USER_ACCESS[0]);
+						for($x=0; $x<$Department; $x++){
+							include($_SESSION['BASE_DIR_BACKEND'].'/view/include/departament/template.php');
+						}
 					?>
 					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
 				</ul>

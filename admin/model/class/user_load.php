@@ -35,6 +35,12 @@
         case ('2.2'):
           return ("SELECT AREA_NAME FROM department_area_{$KEY_1}");
         break;
+        case ('2.3'):
+          return ("SELECT COUNT(ID_AREA) FROM department_area_{$KEY_1}");
+        break;
+        case ('2.4'):
+          return ("SELECT module_name FROM module_{$KEY_1}_{$KEY_2}");
+        break;
         case ('5'):
           return ("INSERT INTO user_access (USER_LOGIN_NAME, USER_LOGIN_PASS) VALUES (:USER_NAME, :USER_PASSWD)");
         break;
@@ -169,6 +175,57 @@
           break;
 
           case ('2'):
+            try{
+              $this->Response['DEPARTAMENTOS']    =  array();
+              $this->Response['AREAS']            =  array();
+              $this->Response['MODULOS']            =  array();
+              $result = $this->Connection->prepare($this->set_Query());
+              $result->execute(); 
+              while($row = $result->fetch(PDO::FETCH_NUM)){
+                array_push($this->Response['DEPARTAMENTOS'], $row);
+              }
+              $result->closeCursor();
+              $this->Action = '2.1';
+              try{
+                $result = $this->Connection->prepare($this->set_Query());
+                $result->execute(); 
+                $row = $result->fetch(PDO::FETCH_ASSOC);
+                $DEPARTAMENTOS = $row['COUNT(ID_DEPARTMENT)'];
+                $result->closeCursor();
+                $this->Action = '2.2';
+                try{
+                  for($x=0;$x<$DEPARTAMENTOS;$x++){
+                    $this->Response['AREAS'][$x] = array();
+                    $result = $this->Connection->prepare($this->set_Query($x+1));
+                    $result->execute(); 
+                    while($row = $result->fetch(PDO::FETCH_NUM)){
+                      array_push($this->Response['AREAS'][$x], $row);
+                    }
+                  }
+                  $result->closeCursor();
+                }
+                catch(PDOException $e){
+                 echo "DataBase Error: The user could not be added.<br>".$e->getMessage();
+                }
+                catch(Exception $e){
+                  echo "General Error: The user could not be added.<br>".$e->getMessage();
+                }
+              }
+              catch(PDOException $e){
+               echo "DataBase Error: The user could not be added.<br>".$e->getMessage();
+              }
+              catch(Exception $e){
+                echo "General Error: The user could not be added.<br>".$e->getMessage();
+              }
+            }
+            catch(PDOException $e){
+            echo "DataBase Error: The user could not be added.<br>".$e->getMessage();
+            }
+            catch(Exception $e){
+              echo "General Error: The user could not be added.<br>".$e->getMessage();
+            }
+          break;
+          case ('3'):
             $this->Response['DEPARTAMENTOS']    =  array();
             $this->Response['AREAS']            =  array();
             try{
