@@ -186,7 +186,7 @@ html {
 }
 body {
     background: #EFEFEF;
-    font-size: 12px;
+    font-size: 13px;
     font-family: 'Open Sans', "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #707478;
 }
@@ -1845,6 +1845,9 @@ legend {
     line-height: 20px;
     font-size: 12px;
 }
+.panel-title i{
+    padding-right: 5px;
+}
 .panel-title .accordion-toggle {
     margin: -10px -15px;
     padding: 10px 15px;
@@ -1879,6 +1882,9 @@ legend {
 }
 .panel-body {
     padding: 15px;
+}
+.panel-body .form-group .control-label {
+    padding-top: 10px;
 }
 .panel-body.no-border {
     border: none !important;
@@ -3986,9 +3992,12 @@ body .fc button:active {
     width: 28px;
     height: 28px;
 }
-.login .login-header .brand small {
-    font-size: 14px;
+.login .login-header .brand {
     display: block;
+}
+.login .login-header .brand figure img{
+    margin-right: 5px;
+    margin-bottom: 8px;
 }
 .login .login-header .icon {
     position: absolute;

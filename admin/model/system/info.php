@@ -1,6 +1,13 @@
-<?php
-  require_once($_SESSION['BASE_DIR_BACKEND'].'/model/config/database.php');
-  class user_info{
+<?php namespace Admin\Model\System;
+
+  foreach ( glob( $_SESSION['BASE_DIR_BACKEND'].'/model/config/*.php' ) as $Filename){
+      require_once (  $Filename );
+  }
+
+  use Admin\Model\Config\Database_a as Database_System;
+  use \PDO;
+
+  class Info{
     private $Request;
     private $Response;
     private $Connection;
@@ -9,7 +16,7 @@
     public function __construct(){
       $this->Response         = array();
       $this->Response['INFO'] = array();
-      $this->Connection       = Database::Connect();
+      $this->Connection       = Database_System::Connect();
       $this->Action           = '1';
     }
     public function get_Response(){
@@ -21,13 +28,13 @@
     private function set_Query($_KEY = 0){
       switch($this->Action){
         case ('1'):
-          return ("SELECT id_job, id_role, user_name, user_last_name, user_img FROM user_info WHERE id_user = :ID_USER_INFO");
+          return ("SELECT job_id, role_id, user_name, user_first_name, user_img FROM users_info WHERE user_id = :ID_USER");
         break;
         case ('2'):
-          return ("SELECT job_name FROM jobs WHERE id_job = :ID_USER_JOB");
+          return ("SELECT job_name FROM jobs WHERE job_id = :ID_JOB");
         break;
         case ('3'):
-          return ("SELECT role_name FROM roles_{$_KEY} WHERE id_role = :ID_USER_ROLE");
+          return ("SELECT role_name FROM roles_{$_KEY} WHERE role_id = :ID_USER_ROLE");
         break;
       }
     }
@@ -36,12 +43,12 @@
         case ('1'):
           try{
             $result = $this->Connection->prepare($this->set_Query());
-            $result->bindParam(':ID_USER_INFO',$_SESSION['ID']);
+            $result->bindParam(':ID_USER',$_SESSION['ID']);
             $result->execute();
             while($row = $result->fetch(PDO::FETCH_ASSOC)){
-              $this->Response['INFO']['JOB']      = $row['id_job'];
-              $this->Response['INFO']['ROLE']     = $row['id_role'];
-              $this->Response['INFO']['NAME']     = $row['user_name'].' '.$row['user_last_name'];
+              $this->Response['INFO']['JOB']      = $row['job_id'];
+              $this->Response['INFO']['ROLE']     = $row['role_id'];
+              $this->Response['INFO']['NAME']     = $row['user_name'].' '.$row['user_first_name'];
               $this->Response['INFO']['IMG']      = $row['user_img'];
             }
             $this->Action       = '2';       
@@ -56,7 +63,7 @@
         case ('2'):
           try{
             $result = $this->Connection->prepare($this->set_Query());
-            $result->bindParam(':ID_USER_JOB',$this->Response['INFO']['JOB']);
+            $result->bindParam(':ID_JOB',$this->Response['INFO']['JOB']);
             $result->execute();
             while($row = $result->fetch(PDO::FETCH_ASSOC)){
               $this->Response['INFO']['JOB_NAME']    = $row['job_name'];
@@ -91,7 +98,7 @@
 
     }
     public function __destruct(){
-      Database::Disconnect();
+      Database_System::Disconnect();
     }
   }
 ?>

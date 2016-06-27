@@ -100,8 +100,8 @@
       }
       public static function Initialize(){   
         self::$Action   =  $_GET['action'];
-        self::$Model    =  array();
-        self::$Request  = null;
+        self::$Model    =  null;
+        self::$Request  =  null;
         self::set_Response();
         self::get_Request();
       }

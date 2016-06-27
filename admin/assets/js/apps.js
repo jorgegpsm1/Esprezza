@@ -250,7 +250,7 @@ var handlePanelAction = function() {
     // remove
     $(document).on('hover', '[data-click=panel-remove]', function(e) {
         $(this).tooltip({
-            title: 'Remove',
+            title: 'Remover',
             placement: 'bottom',
             trigger: 'hover',
             container: 'body'
@@ -266,7 +266,7 @@ var handlePanelAction = function() {
     // collapse
     $(document).on('hover', '[data-click=panel-collapse]', function(e) {
         $(this).tooltip({
-            title: 'Collapse / Expand',
+            title: 'Colapsar / Expandir',
             placement: 'bottom',
             trigger: 'hover',
             container: 'body'
@@ -281,7 +281,7 @@ var handlePanelAction = function() {
     // reload
     $(document).on('hover', '[data-click=panel-reload]', function(e) {
         $(this).tooltip({
-            title: 'Reload',
+            title: 'Recargar',
             placement: 'bottom',
             trigger: 'hover',
             container: 'body'
@@ -299,14 +299,14 @@ var handlePanelAction = function() {
             setTimeout(function() {
                 $(target).removeClass('panel-loading');
                 $(target).find('.panel-loader').remove();
-            }, 2000);
+            }, 1000);
         }
     });
     
     // expand
     $(document).on('hover', '[data-click=panel-expand]', function(e) {
         $(this).tooltip({
-            title: 'Expand / Compress',
+            title: 'Expandir / Comprimir',
             placement: 'bottom',
             trigger: 'hover',
             container: 'body'
@@ -1218,7 +1218,6 @@ var App = function () {
             handleCheckPageLoadUrl(window.location.hash);
 			handleHashChange();
 			
-			// ajax cache setup
 			$.ajaxSetup({
                 cache: false
             });
@@ -1226,6 +1225,10 @@ var App = function () {
 		setPageTitle: function(pageTitle) {
 		    document.title = pageTitle;
 		},
+        setController: function(Controller) {
+            var AppController = Controller;
+            AppController.init();
+        },
 		restartGlobalFunction: function() {
 		    this.initLocalStorage();
 		    this.initTopMenu();
@@ -1276,7 +1279,7 @@ $(document).ready(function(){
 
     $("a[href$='cerrar_session']").click(function(event){
         event.preventDefault();
-        $.getJSON("./model/class/user_end.php", function(){
+        $.getJSON("./model/clase/close.php", function(){
           console.log("success");
           })
           .done(function(response,statusText,jqXhr){

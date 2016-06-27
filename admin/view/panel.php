@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title id="page-title">Esprezza | Dashboard</title>
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport" />
 
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css'); ?>" rel="stylesheet" />
@@ -16,7 +16,6 @@
 	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/bootstrap-fileinput/css/fileinput.css'); ?>" rel="stylesheet" />
   <link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/css/style.css'); ?>" rel="stylesheet" />
 	<link href="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/css/style-responsive.css'); ?>" rel="stylesheet" />
-
 	<script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/plugins/pace/pace.js'); ?>"></script>
 </head>
 <body>
@@ -107,7 +106,7 @@
   <script src="<?php echo ($_SESSION['BASE_DIR_FRONTEND'].'/assets/js/apps.js'); ?>"></script>
   <script>
   	var Setting = {
-  			base_url : "<?php echo ($_SESSION['BASE_DIR_FRONTEND']); ?>"
+  			base_url 				: "<?php echo ($_SESSION['BASE_DIR_FRONTEND']); ?>"
   	};
   </script>
 </body>

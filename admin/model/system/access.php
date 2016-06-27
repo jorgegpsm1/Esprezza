@@ -1,34 +1,41 @@
-<?php
-  require_once($_SESSION['BASE_DIR_BACKEND'].'/model/config/database.php'); 
-  class user_access{
+<?php namespace Admin\Model\System;
+
+  foreach ( glob( $_SESSION['BASE_DIR_BACKEND'].'/model/config/*.php' ) as $Filename){
+      require_once (  $Filename );
+  }
+
+  use Admin\Model\Config\Database_a as Database_System;
+  use \PDO;
+
+  class Access{
     private $Request;
     private $Response;
     private $Connection;
     private $Action;
 
     public function __construct($Input){
-      $this->Connection   = Database::Connect();
+      $this->Connection   = Database_System::Connect();
       $this->set_Request($Input);
     }
     private function set_Query($KEY_1 = 0, $KEY_2 = 0, $KEY_3 = 0){
       switch($this->Action){
         case '0':
-          return ("SELECT ID_DEPARTMENT, DEPARTMENT_NAME, DEPARTMENT_STATUS FROM DEPARTMENT");
+          return ("SELECT department_id, department_name, department_status FROM departments");
         break;
         case '0.1':
-          return ("SELECT USER_DEPARTMENT_STATUS FROM DEPARTMENT_USER_ACCESS_{$KEY_1} WHERE ID_USER = :USER_ID");
+          return ("SELECT user_status FROM department_user_{$KEY_1} WHERE user_id = :USER_ID");
         break;
         case '0.2':
-          return ("SELECT ID_AREA, AREA_NAME, AREA_STATUS FROM DEPARTMENT_AREA_{$KEY_1}");
+          return ("SELECT area_id, area_name, area_status FROM area_{$KEY_1}");
         break;
         case '0.3':
-          return ("SELECT USER_DEPARTMENT_AREA_STATUS FROM DEPARTMENT_AREA_USER_ACCESS_{$KEY_1}_{$KEY_2} WHERE ID_USER = :USER_ID");
+          return ("SELECT user_status FROM area_user_{$KEY_1}_{$KEY_2} WHERE user_id = :USER_ID");
         break;
         case '0.4':
-          return ("SELECT id_module, module_name, module_status FROM module_{$KEY_1}_{$KEY_2}");
+          return ("SELECT module_id, module_name, module_status FROM module_{$KEY_1}_{$KEY_2}");
         break;
         case '0.5':
-          return ("SELECT module_status FROM module_access_{$KEY_1}_{$KEY_2}_{$KEY_3} WHERE ID_USER = :USER_ID");
+          return ("SELECT user_status FROM module_access_{$KEY_1}_{$KEY_2}_{$KEY_3} WHERE user_id = :USER_ID");
         break;
       }
     }
@@ -52,9 +59,9 @@
             $result->execute();
             $DEPARTMENT = 0;
             while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                if($row['DEPARTMENT_STATUS'] == 1){
+                if($row['department_status'] == 1){
                   $this->Response['DEPARTMENT']['TEMP'] = array();
-                  array_push($this->Response['DEPARTMENT']['TEMP'],$row['ID_DEPARTMENT'],$row['DEPARTMENT_NAME']);
+                  array_push($this->Response['DEPARTMENT']['TEMP'],$row['department_id'],$row['department_name']);
                 }
                 if(!empty($this->Response['DEPARTMENT']['TEMP'])){
                   $this->Response['DEPARTMENT']['DEPARTMENT_ACCESS'][$DEPARTMENT] = array();
@@ -78,7 +85,7 @@
                 $result->bindParam(':USER_ID',$_SESSION['ID']);
                 $result->execute();
                 while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                  if($row['USER_DEPARTMENT_STATUS'] == 1){
+                  if($row['user_status'] == 1){
                     $this->Response['DEPARTMENT']['TEMP'] = array();
                     array_push($this->Response['DEPARTMENT']['TEMP'],$this->Response['DEPARTMENT']['DEPARTMENT_ACCESS'][$x][0],$this->Response['DEPARTMENT']['DEPARTMENT_ACCESS'][$x][1]);
                   }
@@ -106,9 +113,9 @@
                   $this->Response['DEPARTMENT']['TEMP'] = array();
                   $z=0;
                   while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                    if($row['AREA_STATUS'] == 1){
+                    if($row['area_status'] == 1){
                       $this->Response['DEPARTMENT']['TEMP'][$z] = array();
-                      array_push($this->Response['DEPARTMENT']['TEMP'][$z],$row['ID_AREA'],$row['AREA_NAME']);
+                      array_push($this->Response['DEPARTMENT']['TEMP'][$z],$row['area_id'],$row['area_name']);
                       $z++;
                     }
                   }
@@ -134,7 +141,7 @@
                       $result->bindParam(':USER_ID',$_SESSION['ID']);         
                       $result->execute();
                       while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                        if($row['USER_DEPARTMENT_AREA_STATUS'] == 1){
+                        if($row['user_status'] == 1){
                           $this->Response['DEPARTMENT']['TEMP'][$b] = array();
                           $this->Response['DEPARTMENT']['TEMP'][$b] = $this->Response['DEPARTMENT']['AREA_ACCESS'][$x][$y];
                           $b++;
@@ -174,7 +181,7 @@
                           while($row = $result->fetch(PDO::FETCH_ASSOC)){
                             if($row['module_status'] == 1){
                               $this->Response['DEPARTMENT']['TEMP'][$c] = array();
-                              array_push($this->Response['DEPARTMENT']['TEMP'][$c],$row['id_module'],$row['module_name']);
+                              array_push($this->Response['DEPARTMENT']['TEMP'][$c],$row['module_id'],$row['module_name']);
                               $c++;
                             }
                           }
@@ -212,7 +219,7 @@
                             $result->bindParam(':USER_ID',$_SESSION['ID']);         
                             $result->execute();
                             while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                              if($row['module_status'] == 1){
+                              if($row['user_status'] == 1){
                                 $this->Response['DEPARTMENT']['TEMP'][$c] = array();
                                 $this->Response['DEPARTMENT']['TEMP'][$c] = $this->Response['DEPARTMENT']['MODULE_ACCESS'][$x][$y][$z];
                                 $c++;
@@ -289,7 +296,7 @@
       }
     }
     public function __destruct(){
-      Database::Disconnect();
+      Database_System::Disconnect();
     }
   }
 ?>

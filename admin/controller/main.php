@@ -1,5 +1,6 @@
-<?php
-  class Main_Controller{
+<?php namespace Admin\Controller;
+
+  class Main{
     public function __construct(){
       die('No se instancian objetos');
     }
@@ -13,12 +14,12 @@
       self::is_Session();
       switch($_SESSION['ACTION']){ 
         case ('1' == $_SESSION['ACTION'] || $_SESSION['ACTION'] == '2'):
-          require_once($_SESSION['BASE_DIR_BACKEND'].'/controller/login_controller.php');
-          Login_Controller::Initialize();
+          require_once($_SESSION['BASE_DIR_BACKEND'].'/controller/login.php');
+          Login::Initialize();
         break;
         case ('3'):
-          require_once($_SESSION['BASE_DIR_BACKEND'].'/controller/panel_controller.php');
-          Panel_Controller::Initialize();
+          require_once($_SESSION['BASE_DIR_BACKEND'].'/controller/panel.php');
+          Panel::Initialize();
         break;
       }
     }
@@ -26,7 +27,5 @@
       die('No se instancian objetos');
     }
   }
-
-  Main_Controller::Initialize();
 ?>
 
