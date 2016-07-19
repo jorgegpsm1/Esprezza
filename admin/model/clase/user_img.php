@@ -1,6 +1,11 @@
 <?php 
 	@session_start();
-	require_once($_SESSION['BASE_DIR_BACKEND'].'/model/config/database.php');
+
+      foreach ( glob( $_SESSION['BASE_DIR_BACKEND'].'/model/config/*.php' ) as $Filename){
+          require_once (  $Filename );
+      }
+
+  use Admin\Model\Config\Database_mysql as Database_MYSQL;
 	class user_img{
         private static $Response;
         private static $Connection;
@@ -13,7 +18,7 @@
         private static function set_Query(){
             switch(self::$Action){
                 case ('1'):
-                    return ("UPDATE user_info set user_img = :USER_IMAGE WHERE id_user = :ID_USER");
+                    return ("UPDATE users_info set user_img = :USER_IMAGE WHERE user_id = :ID_USER");
                 break;
                 
             }
@@ -23,10 +28,10 @@
             self::$Response['Success']  = false;
 
             if(self::is_Request($_GET['file'])){
-                self::$Connection   = Database::Connect();
+                self::$Connection   = Database_MYSQL::Connect();
                 self::$Action       = '1';
                 self::set_Response(); 
-                Database::Disconnect();
+                Database_MYSQL::Disconnect();
             }
 
             header('Content-Type: application/json');

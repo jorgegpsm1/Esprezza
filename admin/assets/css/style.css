@@ -1,185 +1,3 @@
-/*
-::  1.0 General Reset & Setup
--------------------------------------------
-    1.1 Reset and overrides
-        
-::  2.0 Page Structure Settings
--------------------------------------------
-    2.1 Page Options
-    2.2 Page Loader
-    2.3 Header & header elements
-    2.4 Sidebar & sidebar elements
-    2.5 Content & content elements
-    2.6 Footer & footer elements
-    
-::  3.0 Component Setting
--------------------------------------------
-    3.1 Component - Form Elements
-    3.2 Component - Dropdown Menu
-    3.3 Component - Tooltip
-    3.4 Component - Alert
-    3.5 Component - Note Setting
-    3.6 Component - Badge & Label Setting
-    3.7 Component - Pagination & pager
-    3.8 Component - Progress bar
-    3.9 Component - Nav Setting
-    3.10 Component - Nav Tabs
-    3.11 Component - Nav Pills
-    3.12 Component - Tab Content
-    3.13 Component - Accordion Panel
-    3.14 Component - Button
-        3.14.1 Component - Button - Default
-        3.14.2 Component - Button - White
-        3.14.3 Component - Button - Inverse
-        3.14.4 Component - Button - Primary
-        3.14.5 Component - Button - Success
-        3.14.6 Component - Button - Warning
-        3.14.7 Component - Button - Danger
-        3.14.8 Component - Button - Info
-    3.15 Component - Panel
-    3.16.Component - Panel - Panel Expand
-    3.17 Component - Panel - Panel loading
-    3.18 Component - Modal Setting
-    3.19 Component - Media Object
-    3.20 Component - Table
-    3.21 Component - Well
-    3.22 Component - Jumbotron
-    3.23 Component - List Group
-    3.24 Component - Carousel
-
-::  4.0 Predefined CSS Setting
--------------------------------------------
-    4.1 Predefined Classes
-
-::  5.0 Plugins Setting
--------------------------------------------
-    5.0 Plugins Setting
-    5.1 Plugins - jQuery Draggable
-    5.2 Plugins - Slimscrollbar
-    5.3 Plugins - Gritter Notification
-    5.4 Plugins - Data Table
-    5.5 Plugins - Datepicker
-    5.6 Plugins - Colorpicker
-    5.7 Plugins - Bootstrap Timepicker
-    5.8 Plugins - jQuery Autocomplete
-    5.9 Plugins - Combobox
-    5.10 Plugins - Bootstrap Select
-    5.11 Plugins - TagIt
-    5.12 Plugins - Parsley
-    5.13 Plugins - CKEditor / wysihtml5
-    5.14 Plugins - Bootstrap Wizard
-    5.15 Plugins - Fullcalendar
-    5.16 Plugins - jVectorMap
-    5.17 Plugins - Flot Chart
-    5.18 Plugins - Sparkline
-
-::  6.0 Page Setting
--------------------------------------------
-    6.1 Page - Search Result
-    6.2 Media Message
-    6.3 Widget Stats
-    6.4 Todolist
-    6.5 Page - Vector / Google Map
-    6.6 Page - Invoice
-    6.7 Page - Login
-    6.8 Page - Gallery
-    6.9 Page - Inbox
-    6.10 Page - 404 Error Page
-
-::  7.0 Update - V1.1 
--------------------------------------------
-    7.1 Timeline Setting
-    7.2 Coming Soon Page Setting
-
-::  8.0 Update - V1.2 
--------------------------------------------
-    8.1 Theme Panel Setting
-    8.2 Powerange Slider Setting
-    8.3 Plugins DateTimepicker
-    8.4 Plugins wysihtml5 Sandbox
-    8.5 Plugins Typeahead
-    8.6 Plugins Select 2 Choice
-    8.7 Login Page V2
-    
-::  9.0 Update - V1.3
--------------------------------------------
-    9.1 Widget Chart Setting
-    9.2 List Group Item Inverse Setting
-    9.3 Bootstrap Calendar Setting
-    9.4 Registered Users List Setting
-    9.5 Chat List Setting
-    9.6 Gallery v2 - Superbox Setting
-    
-::  10.0 Update - V1.4
--------------------------------------------
-    10.1 Page - Email Inbox v2
-    10.2 Page - Email Detail v2
-    
-::  11.0 Update - V1.5
--------------------------------------------
-    11.1 Content Theme - Flat Black
-        11.1.1  Flat Black - Body Setting
-        11.1.2  Flat Black -  Navbar Inverse Setting
-        11.1.3  Flat Black - Sidebar Setting
-        11.1.4  Flat Black - Page Footer Setting
-        11.1.5  Flat Black - List Group item Setting
-        11.1.6  Flat Black - Nav Pills Setting
-        11.1.7  Flat Black - Badge Setting
-        11.1.8  Flat Black - Tabs Setting
-        11.1.9  Flat Black - Panel Setting
-        11.1.10 Flat Black - Table Setting
-        11.1.11 Flat Black - Button Inverse Setting
-        11.1.12 Flat Black - Button Default Setting
-        11.1.13 Flat Black - Button White Setting
-        11.1.14 Flat Black - Pagination Setting
-        11.1.15 Flat Black -  Progress Bar Setting
-        11.1.16 Flat Black - Vector Map Setting
-        11.1.17 Flat Black - Helper Classes Setting
-        11.1.18 Flat Black - Bootstrap Wizard Setting
-        11.1.19 Flat Black - Timeline
-        11.1.20 Flat Black - Invoice
-        11.1.21 Flat Black - Error Page
-    11.2 Pace Loader Setting
-    
-::  12.0 Update - V1.6
--------------------------------------------
-    12.1 Unlimited Nav Tabs 
-    
-::  13.0 Update - V1.7
--------------------------------------------
-    13.1 Light Sidebar Setting
-    13.2 Wide Sidebar Setting
-    13.3 Navbar Header Brand Without Background Setting
-    13.4 Plugins - Jstree Setting
-    13.5 Top Navbar Mega Menu Setting
-    13.6 Login & Register Page with News Feed Setting
-    13.7 Plugins - Bootstrap Date Range Picker
-    13.8 Plugins - Select 2
-    13.9 Top Navbar Language Setting
-    13.10 Profile Page Setting
-    
-::  14.0 Update - V1.8
--------------------------------------------
-    14.1 Full Color Panel
-    14.2 Bootstrap Date Timepicker
-    
-::  15.0 Update - V1.9
--------------------------------------------
-    15.1 Sidebar Transparent
-    15.2 Top Menu Element
-         15.2.1 Top Menu Sub Menu Setting
-         15.2.2 Top Menu Left & Right Control Setting
-    15.3 Boxed Layout Setting
-    15.4 Nvd3 Chart Setting 
-*/
-
-
-/* -------------------------------
-   1.0 General reset & setup
-------------------------------- */
-
-/* 1.1 Reset and overrides */
-
 body,
 html {
     height: 100%;
@@ -6305,8 +6123,6 @@ body.flat-black {
 }
 
 
-/* 13.9 Top Navbar Language Setting */
-
 .navbar-language .flag-icon {
     font-size: 15px;
     margin: 2px 7px 0;
@@ -6314,29 +6130,143 @@ body.flat-black {
 }
 
 
-/* 13.10 Profile Page Setting */
-
 .profile-container {
-    background: #fff;
-    padding: 20px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
+  display: inline-block;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  background: #fff;
+  margin-top: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  overflow: hidden;
 }
-.profile-container:before,
-.profile-container:after {
-    content: '';
-    display: table;
-    clear: both;
+.profile-container .profile-left {
+  margin-right:  -12px;
 }
-.profile-left {
-    width: 200px;
-    float: left;
+
+.profile-container .profile-left .sidebar-header{
+  background: #242A30;
+  color: white;
+  padding: 20px;
+  height: 80px; 
+  border-bottom: 1px solid #F0F1F2;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
-.profile-right {
-    margin-left: 240px;
-    padding-right: 20px;
+.profile-container .profile-left .sidebar-header figure{
+  display: inline-block;
+  vertical-align: middle;
+  width: 10%;
+  height: 100%;
+  margin-right: 15px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
 }
+.profile-container .profile-left .sidebar-header figure img{
+  width: 60px;
+  height: 60px;
+  max-width: 100%;
+  max-height: 100%;  
+}
+.profile-container .profile-left .sidebar-header p{
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+.profile-container .profile-left .sidebar-menu-item {
+  background: #FFFFFF;
+  padding: 20px;
+  border-bottom: 1px solid #F0F1F2;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.profile-container .profile-left .sidebar-menu-item i{
+  margin-right: 15px;
+}
+.profile-container .profile-left .sidebar-menu-item.sidebar-menu-item-active  {
+  background: #FFFFFF;
+  border-left: 3px solid #348AA7;
+}
+.profile-container .profile-left .sidebar-menu-item:hover {
+  background: #F5F5F5;
+  cursor: pointer;
+}
+.profile-container .profile-right {
+  border-left: 4px solid #eee;
+}
+.profile-container .profile-right .profile-content .profile-content-avatar {
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  display: block;
+  vertical-align: middle;
+  margin: 20px auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.profile-container .profile-right .profile-content .profile-content-avatar .profile-avatar-overlay {
+  opacity: 0;
+  background: rgba(52, 138, 167, 0.6);
+  color: #FFF;
+  text-align: center;
+  line-height: 150px;
+  border-radius: 50%;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.profile-container .profile-right .profile-content .profile-content-avatar:hover .profile-avatar-overlay {
+  opacity: 1;
+  border-radius: 50%;
+}
+.profile-container .profile-right .profile-content .settings-form {
+  max-width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+.profile-container .profile-right .profile-content .settings-form .settings-form-input-label {
+  font-size: 90%;
+  color: #C4C1C9;
+  display: block;
+  margin: 5px 5px 5px 5px;
+}
+.profile-container .profile-right .profile-content .settings-form .settings-form-input {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #F1F3F5;
+  margin-bottom: 20px;
+  outline: none;
+  padding: 15px;
+  border-radius: 3px;
+  color: #000;
+  font-family: "Montserrat", sans-serif;
+}
+.profile-container .profile-right .profile-content .settings-form .settings-form-input:focus {
+  border: 1px solid #348AA7;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.profile-container .profile-right .profile-content .settings-form .settings-form-input input[type="text"]:disabled {
+  cursor: not-allowed;
+  background-color: #EBEBE4;
+}
+.profile-container .profile-right .profile-content .settings-form .settings-save-button {
+color: #FFF;
+background-color: #8ED081;
+}
+.profile-container .profile-right .profile-content .settings-form .settings-save-button:focus {
+  background-color: #6dc25c;
+  cursor: pointer;
+}
+/*
 .profile-image {
     height: 175px;
     line-height: 175px;
@@ -6366,6 +6296,7 @@ body.flat-black {
     font-size: 12px;
     font-weight: bold;
 }
+*/
 .table.table-profile > thead > tr > th {
     border-bottom: none !important;
 }

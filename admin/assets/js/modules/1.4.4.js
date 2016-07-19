@@ -1,37 +1,37 @@
-var SuccessCreateNominista  =  function(){
+var SuccessCreatATC  =  function(){
   var template="";
   template+= "<div class='alert alert-success fade in'>";
   template+= "<span class='close' data-dismiss='alert'>×</span>";
   template+= "<i class='fa fa-check fa-2x pull-left'></i>";
-  template+= "<p>Nominista creado satisfactoriamente.</p>";
+  template+= "<p>ATC creado satisfactoriamente.</p>";
   template+= "</div>";
   return template;
 };
-var RestartCreateNominista  = function(){
+var RestartCreateATC  = function(){
   $("#Equipo").selectpicker('destroy');
   $("#Equipo").empty();
   $("#Usuarios").selectpicker('destroy');
   $("#Usuarios").empty();
 }
-var getNoministaID = function(){
-  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.3&action=1', function(){
+var getATCID = function(){
+  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.4&action=1', function(){
   })
   .done(function(Response,statusText,jqXhr){
     if(Response.Success){
       if(Response.Data==0){
-        $("#noNominista").html("1");
+        $("#noATC").html("1");
       }
       else{
-        $("#noNominista").html(Response.Data);
+        $("#noATC").html(Response.Data);
       }
     }
   })
   .fail(function(){
-    $("#noNominista").html("1");
+    $("#noATC").html("1");
   });
 }
 var getProyectName = function(){
-  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.3&action=2', function(){
+  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.4&action=2', function(){
   })
   .done(function(Response,statusText,jqXhr){
     if(Response.Success){
@@ -58,7 +58,7 @@ var getProyectName = function(){
   });
 }
 var getUserName = function(){
-  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.3&action=3', function(){
+  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.4&action=3', function(){
   })
   .done(function(Response,statusText,jqXhr){
     if(Response.Success){
@@ -97,7 +97,7 @@ var EventsCreate = function(){
     };
     $.ajax({
       type:          "post",
-      url:           Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.3&action=4',
+      url:           Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.4&action=4',
       async:         false,
       cache:         false,
       data:          JSON.stringify(data),
@@ -115,19 +115,19 @@ var EventsCreate = function(){
             $(target).find('.panel-loader').remove();
           }, 700);
           $("#CreateContent").addClass('hidden');
-          RestartCreateNominista();
+          RestartCreateATC();
         };
       },
       success:       function(Response){
-        getNoministaID();
+        getATCID();
         getProyectName();
         getUserName();
         $("#CreateContent").removeClass('hidden');
         if(Response.Success){
-          $("#CreatePanel .panel-body").prepend(SuccessCreateNominista());
+          $("#CreatePanel .panel-body").prepend(SuccessCreatATC());
         }
         else{
-          $("#CreatePanel .panel-body").prepend(SuccessCreateNominista());
+          $("#CreatePanel .panel-body").prepend(SuccessCreatATC());
         }
       },
       error:         function(Response, error){
@@ -148,7 +148,7 @@ var templateEditProyect  =  function(){
   return template;
 };
 var getEditTable = function(){
-  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.3&action=5', function(){
+  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.4&action=5', function(){
     restartEdit();
     $("#myTable").append(templateEditProyect());
   })
@@ -156,7 +156,7 @@ var getEditTable = function(){
     if(Response.Success){
       var dataTableHead = "";
       var dataTableBody = "";
-      dataTableHead+="<tr><th>ID Nominista</th><th>Equipo</th><th>Nominista</th></tr>";
+      dataTableHead+="<tr><th>ID ATC</th><th>Equipo</th><th>ATC</th></tr>";
       if(Response.Data){
         for(var x=0; x<Response.Data[0].length; x++){
           dataTableBody+="<tr>";
@@ -182,43 +182,43 @@ var getEditTable = function(){
   });
 }
 
-var CreateNominista = function(){
+var CreateATC = function(){
   "use strict";
-  getNoministaID();
+  getATCID();
   getProyectName();
   getUserName();
   EventsCreate();
 }
 
-var EditNominista = function(){
+var EditATC = function(){
   "use strict";
   getEditTable();
 }
 
 var Init = function(){
   "use strict";
-  CreateNominista();
-  EditNominista();
+  CreateATC();
+  EditATC();
   $("#CreateContent").removeClass("hidden");
   $("#EditContent").removeClass("hidden");
 
 
   $($("#CreatePanel").parent()).find("[data-click=panel-reload]").click(function(){
       $("#CreateContent").addClass('hidden');
-      RestartCreateNominista();
-      CreateNominista();
+      RestartCreateATC();
+      CreateATC();
       $("#CreateContent").removeClass('hidden');
   });
 
   $($("#EditPanel").parent()).find("[data-click=panel-reload]").click(function(){
     $("#EditContent").addClass('hidden');
-    EditNominista();
+		EditATC();
     $("#EditContent").removeClass('hidden');
   });
 };
 
 
-var Noministas = function (){
+var ATC = function (){
   "use strict";
   return {
     init: function () {

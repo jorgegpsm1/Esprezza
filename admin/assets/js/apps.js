@@ -1093,8 +1093,6 @@ var handleUnlimitedTopMenuRender = function() {
 };
 
 
-/* 25. Handle Top Menu - Sub Menu Toggle - added in V1.9
------------------------------------------------- */
 var handleTopMenuSubMenu = function() {
     "use strict";
     $('.top-menu .sub-menu .has-sub > a').click(function() {
@@ -1115,8 +1113,6 @@ var handleTopMenuSubMenu = function() {
 };
 
 
-/* 26. Handle Top Menu - Mobile Sub Menu Toggle - added in V1.9
------------------------------------------------- */
 var handleMobileTopMenuSubMenu = function() {
     "use strict";
     $('.top-menu .nav > li.has-sub > a').click(function() {
@@ -1138,9 +1134,6 @@ var handleMobileTopMenuSubMenu = function() {
     });
 };
 
-
-/* 27. Handle Top Menu - Mobile Top Menu Toggle - added in V1.9
------------------------------------------------- */
 var handleTopMenuMobileToggle = function() {
     "use strict";
     $('[data-click="top-menu-toggled"]').click(function() {
@@ -1149,8 +1142,6 @@ var handleTopMenuMobileToggle = function() {
 };
 
 
-/* 28. Handle Clear Sidebar Selection & Hide Mobile Menu - added in V1.9
------------------------------------------------- */
 var handleClearSidebarSelection = function() {
     $('.sidebar .nav > li, .sidebar .nav .sub-menu').removeClass('expand').removeAttr('style');
 };
@@ -1158,8 +1149,7 @@ var handleClearSidebarMobileSelection = function() {
     $('#page-container').removeClass('page-sidebar-toggled');
 };
 
-/* Application Controller
------------------------------------------------- */
+
 var App = function () {
 	"use strict";
 	
@@ -1244,14 +1234,18 @@ var App = function () {
 
 $(document).ready(function(){
     App.init();
-    var Active_1 = $("#lol");
-    var Active_2 = $("#lol");;
-    var Active_3 = $("#lol");
+    var Active_1, Active_2, Active_3;
 
     function cargarContenido(div,URL){
       Pace.restart(); 
       $(div).load(URL);
     }
+    $("a[href='settings.php']").click(function(event){
+      event.preventDefault();
+      cargarContenido(("#ajax-content"),"./assets/ajax/include/system/settings.php");
+      return false;
+    });
+
     $("a[href^='urls']").click(function(event){
       event.preventDefault();          
       if(Active_3!=$(this).parent()){
@@ -1301,7 +1295,7 @@ $(document).ready(function(){
         });
         $.ajax({
             type:          "post",
-            url:           "./model/class/user_img.php?file",
+            url:           "./model/clase/user_img.php?file",
             async:         true,
             cache:         false,
             data:          data,

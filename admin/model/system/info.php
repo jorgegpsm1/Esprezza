@@ -28,7 +28,7 @@
     private function set_Query($_KEY = 0){
       switch($this->Action){
         case ('1'):
-          return ("SELECT job_id, role_id, user_name, user_first_name, user_img FROM users_info WHERE user_id = :ID_USER");
+          return ("SELECT job_id, role_id, user_firstname, user_first_name, user_img FROM users_info WHERE user_id = :ID_USER");
         break;
         case ('2'):
           return ("SELECT job_name FROM jobs WHERE job_id = :ID_JOB");
@@ -48,7 +48,7 @@
             while($row = $result->fetch(PDO::FETCH_ASSOC)){
               $this->Response['INFO']['JOB']      = $row['job_id'];
               $this->Response['INFO']['ROLE']     = $row['role_id'];
-              $this->Response['INFO']['NAME']     = $row['user_name'].' '.$row['user_first_name'];
+              $this->Response['INFO']['NAME']     = $row['user_firstname'].' '.$row['user_first_name'];
               $this->Response['INFO']['IMG']      = $row['user_img'];
             }
             $this->Action       = '2';       

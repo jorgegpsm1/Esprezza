@@ -83,7 +83,7 @@ var Obtener_Permisos = function(){
             Departamentos+="<div class='material-switch pull-right'>";
             Departamentos+="<input id='Dpt_"+Val_1+"' type='checkbox'  />";
             Departamentos+="<label for='Dpt_"+Val_1+"' class='label-success'></label>"; 
-            Departamentos+="</div>"; 2
+            Departamentos+="</div>";
             Departamentos+="</li>";
             Depts.push(Value); 
           });           

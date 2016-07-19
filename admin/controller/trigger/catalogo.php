@@ -108,6 +108,16 @@
             break;
 
             case ('4'):
+              $Json   = file_get_contents('php://input');
+              $Input  = json_decode($Json,true);
+              self::$Request                    = $Input;
+              self::$Request['TeamID']          = self::$Request['TeamID'];
+              self::$Request['UserID']          = self::$Request['UserID'];
+              self::$Request['url']             = self::$Url;
+              self::$Request['action']          = self::$Action;
+            break;
+
+            case ('5'):
               self::$Request['url']     = self::$Url;
               self::$Request['action']  = self::$Action;
             break;
@@ -126,16 +136,21 @@
             break;
 
             case ('3'):
+              self::$Request['url']     = self::$Url;
+              self::$Request['action']  = self::$Action;
+            break;
+
+            case ('4'):
               $Json   = file_get_contents('php://input');
               $Input  = json_decode($Json,true);
               self::$Request                    = $Input;
-              self::$Request['ProyectID']       = self::$Request['ProyectID'];
-              self::$Request['ColorSelection']  = self::$Request['ColorSelection'];
+              self::$Request['TeamID']          = self::$Request['TeamID'];
+              self::$Request['UserID']          = self::$Request['UserID'];
               self::$Request['url']             = self::$Url;
               self::$Request['action']          = self::$Action;
             break;
 
-            case ('4'):
+            case ('5'):
               self::$Request['url']     = self::$Url;
               self::$Request['action']  = self::$Action;
             break;

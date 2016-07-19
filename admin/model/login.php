@@ -18,7 +18,6 @@
       $this->set_Request( $Input );
     }
     private function set_Query( $KEY_1 = 0 ){
-
       switch ( $this->Action ){
         case ( '1' ):
           return (  "SELECT user_id, user_name, user_passwd, user_status  FROM users" );

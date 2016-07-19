@@ -76,7 +76,7 @@
 	$('#user_login').click(function(e){
 	  e.preventDefault();
 	  var data  = {
-	    NameUser:       $('#UserName').val().trim(),//+"@esprezza.com",,
+	    NameUser:       $('#UserName').val().trim()+"@esprezza.com",
 	    PasswordUser:   Sha256.hash($('#UserPassword').val().trim()),
 	    CheckUser:      Check,
 	    BrowserUser:    get_Browser(),

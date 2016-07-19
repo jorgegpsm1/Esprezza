@@ -44,8 +44,8 @@
 						</a>
 						<ul class="dropdown-menu animated fadeInLeft" role="menu">
 							<li class="arrow"></li>
-							<li><a href="javascript:;" class="text-left"><i class="fa fa-user"></i>Perfil</a></li>
-							<li><a href="javascript:;" class="text-left"><i class="fa fa-cog"></i>Ajustes</a></li>
+							<li><a href="profile.php" class="text-left"><i class="fa fa-user"></i>Perfil</a></li>
+							<li><a href="settings.php" class="text-left"><i class="fa fa-cog"></i>Ajustes</a></li>
 							<li class="divider"></li>
 							<li><a href="cerrar_session" class="text-center">Cerrar session</a></li>
 						</ul>

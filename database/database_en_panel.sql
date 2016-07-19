@@ -1,7 +1,7 @@
 /*STATIC UNIQUE*/
 create table IF NOT EXISTS users(
 	user_id tinyint unsigned NOT NULL AUTO_INCREMENT,
-	user_name varchar(30) NOT NULL,
+	user_name varchar(60) NOT NULL,
 	user_passwd varchar(255) NOT NULL,
 	user_status tinyint(1) NOT NULL DEFAULT 1,
 	UNIQUE(user_name),
@@ -30,7 +30,8 @@ create table IF NOT EXISTS users_info(
 	user_id tinyint unsigned NOT NULL,
 	job_id tinyint unsigned NOT NULL,
 	role_id tinyint unsigned NOT NULL,
-	user_name varchar(60) NOT NULL,
+	user_firstname varchar(30) NOT NULL,
+	user_lastname varchar(30) NOT NULL,
 	user_first_name varchar(60) NOT NULL,
 	user_last_name varchar(60) NOT NULL,
 	user_img varchar(120) NOT NULL,

@@ -1,55 +1,62 @@
-var SuccessCreateNominista  =  function(){
+var SuccessCreateTeam  =  function(){
   var template="";
   template+= "<div class='alert alert-success fade in'>";
   template+= "<span class='close' data-dismiss='alert'>×</span>";
   template+= "<i class='fa fa-check fa-2x pull-left'></i>";
-  template+= "<p>Nominista creado satisfactoriamente.</p>";
+  template+= "<p>Equipo creado satisfactoriamente.</p>";
   template+= "</div>";
   return template;
 };
-var RestartCreateNominista  = function(){
-  $("#Equipo").selectpicker('destroy');
-  $("#Equipo").empty();
+var RestartCreateTeam  = function(){
+  $("#Proyecto").selectpicker('destroy');
+  $("#Proyecto").empty();
   $("#Usuarios").selectpicker('destroy');
   $("#Usuarios").empty();
 }
-var getNoministaID = function(){
-  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.3&action=1', function(){
+var getTeamID = function(){
+  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.1&action=1', function(){
   })
   .done(function(Response,statusText,jqXhr){
     if(Response.Success){
       if(Response.Data==0){
-        $("#noNominista").html("1");
+        $("#noEquipo").html("1");
       }
       else{
-        $("#noNominista").html(Response.Data);
+        $("#noEquipo").html(Response.Data);
       }
     }
   })
   .fail(function(){
-    $("#noNominista").html("1");
+    $("#noEquipo").html("1");
   });
 }
 var getProyectName = function(){
-  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.3&action=2', function(){
+  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.1&action=2', function(){
   })
   .done(function(Response,statusText,jqXhr){
     if(Response.Success){
       var SelectProyect = "";
       if(Response.Data){
-        for(var x=0; x<Response.Data[0].length; x++){
-          SelectProyect+="<option value="+Response.Data[0][x][0]+">"+Response.Data[1][x][0]+"</option>";
-        }
-        $("#Equipo").append(SelectProyect);
-        $("#Equipo").attr("title","Proyectos");
+        $.each(Response.Data,function(){
+            $.each(this, function(Key, Value){
+              if(Key==0){
+                SelectProyect+= "<option value="+Value+">";
+              }
+              else{
+                SelectProyect+= Value+"</option>";
+              }
+            });
+        });
+        $("#Proyecto").append(SelectProyect);
+        $("#Proyecto").attr("title","Proyectos");
        }
        else{
-        $("#Equipo").prop("disabled",true);
-        $("#Equipo").attr("title","Sin registros");
+        $("#Proyecto").prop("disabled",true);
+        $("#Proyecto").attr("title","Sin registros");
        }
     }
   },function(){
-    $("#Equipo").selectpicker({ 
+    $("#Proyecto").selectpicker({ 
       style: 'form-control',
       size: 4
     });
@@ -58,15 +65,22 @@ var getProyectName = function(){
   });
 }
 var getUserName = function(){
-  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.3&action=3', function(){
+  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.1&action=3', function(){
   })
   .done(function(Response,statusText,jqXhr){
     if(Response.Success){
       var SelectProyect = "";
       if(Response.Data){
-        for(var x=0; x<Response.Data.length; x++){
-          SelectProyect+="<option value="+Response.Data[x][0]+">"+Response.Data[x][1]+"</option>";
-        }
+        $.each(Response.Data,function(){
+            $.each(this, function(Key, Value){
+              if(Key==0){
+                SelectProyect+= "<option value="+Value+">";
+              }
+              else{
+                SelectProyect+= Value+"</option>";
+              }
+            });
+        });
         $("#Usuarios").append(SelectProyect);
         $("#Usuarios").attr("title","Proyectos");
        }
@@ -88,16 +102,16 @@ var EventsCreate = function(){
   "use strict";
   $("#CreateInput").click(function(event){
     event.preventDefault();
-    if($("#Equipo").attr('title') == "Sin registros" || $("#Usuarios").attr('title') == "Sin registros"){
+    if($("#Proyecto").attr('title') == "Sin registros" || $("#Usuarios").attr('title') == "Sin registros"){
       return false;
     }
     var data = {
-      TeamID        : $("#Equipo").val(),
+      ProyectID     : $("#Proyecto").val(),
       UserID        : $("#Usuarios").val()
     };
     $.ajax({
       type:          "post",
-      url:           Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.3&action=4',
+      url:           Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.1&action=4',
       async:         false,
       cache:         false,
       data:          JSON.stringify(data),
@@ -115,19 +129,19 @@ var EventsCreate = function(){
             $(target).find('.panel-loader').remove();
           }, 700);
           $("#CreateContent").addClass('hidden');
-          RestartCreateNominista();
+          RestartCreateTeam();
         };
       },
       success:       function(Response){
-        getNoministaID();
+        getTeamID();
         getProyectName();
         getUserName();
         $("#CreateContent").removeClass('hidden');
         if(Response.Success){
-          $("#CreatePanel .panel-body").prepend(SuccessCreateNominista());
+          $("#CreatePanel .panel-body").prepend(SuccessCreateTeam());
         }
         else{
-          $("#CreatePanel .panel-body").prepend(SuccessCreateNominista());
+          $("#CreatePanel .panel-body").prepend(SuccessCreateTeam());
         }
       },
       error:         function(Response, error){
@@ -148,7 +162,7 @@ var templateEditProyect  =  function(){
   return template;
 };
 var getEditTable = function(){
-  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.3&action=5', function(){
+  $.getJSON(Setting.base_url+'/controller/trigger/catalogo.php?urls=1.4.1&action=5', function(){
     restartEdit();
     $("#myTable").append(templateEditProyect());
   })
@@ -156,13 +170,13 @@ var getEditTable = function(){
     if(Response.Success){
       var dataTableHead = "";
       var dataTableBody = "";
-      dataTableHead+="<tr><th>ID Nominista</th><th>Equipo</th><th>Nominista</th></tr>";
+      dataTableHead+="<tr><th>Eqipo</th><th>Proyecto</th><th>Jefe Proyecto</th></tr>";
       if(Response.Data){
         for(var x=0; x<Response.Data[0].length; x++){
           dataTableBody+="<tr>";
           dataTableBody+="<td>"+Response.Data[0][x][0]+"</td>";
+          dataTableBody+="<td>"+Response.Data[1][x][0]+"</td>";
           dataTableBody+="<td>"+Response.Data[2][x][0]+"</td>";
-          dataTableBody+="<td>"+Response.Data[3][x][0]+"</td>";
           dataTableBody+="</tr>";
         }
       }
@@ -182,43 +196,44 @@ var getEditTable = function(){
   });
 }
 
-var CreateNominista = function(){
+var CreateTeam = function(){
   "use strict";
-  getNoministaID();
+  getTeamID();
   getProyectName();
   getUserName();
   EventsCreate();
 }
 
-var EditNominista = function(){
+var EditTeam = function(){
   "use strict";
   getEditTable();
 }
 
 var Init = function(){
   "use strict";
-  CreateNominista();
-  EditNominista();
+  CreateTeam();
+  EditTeam();
   $("#CreateContent").removeClass("hidden");
   $("#EditContent").removeClass("hidden");
 
 
+
   $($("#CreatePanel").parent()).find("[data-click=panel-reload]").click(function(){
       $("#CreateContent").addClass('hidden');
-      RestartCreateNominista();
-      CreateNominista();
+      RestartCreateTeam();
+      CreateTeam();
       $("#CreateContent").removeClass('hidden');
-  });
+    });
 
   $($("#EditPanel").parent()).find("[data-click=panel-reload]").click(function(){
     $("#EditContent").addClass('hidden');
-    EditNominista();
+    EditTeam();
     $("#EditContent").removeClass('hidden');
   });
 };
 
 
-var Noministas = function (){
+var Team = function (){
   "use strict";
   return {
     init: function () {
